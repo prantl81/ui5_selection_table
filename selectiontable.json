@@ -28,24 +28,6 @@
 			"default": ""
 		}
 	},
-	"methods": {
-		"addRow": {
-			"returnType": "string",
-			"description": "Add a row",
-			"parameters": []
-		},
-		"deleteRow": {
-			"description": "Delete row by ID",
-			"parameters": [{
-				"id": "value"
-			}]
-		},
-		"DelelteAllRows": {
-			"returnType": "string",
-			"description": "Deletes all the table content",
-			"parameters": []
-		}
-	},
 	"events": {
 		"onStart": {
 			"description": "onStart events trigger"
