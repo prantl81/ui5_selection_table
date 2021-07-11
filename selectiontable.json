@@ -42,7 +42,7 @@
         {
           "id": "value"
         }
-      ],
+      ]
     },
    "DelelteAllRows": {
       "returnType": "string",
