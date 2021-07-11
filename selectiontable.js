@@ -187,13 +187,13 @@
         }
 
         _firePropertiesChanged() {
-            this.password = "";
+            /*this.password = "";
             this.dispatchEvent(new CustomEvent("propertiesChanged", {
                 detail: {
                     properties: {
                         //password: this.password
                     }
-                }
+                } */
             }));
         }
 
