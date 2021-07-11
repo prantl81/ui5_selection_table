@@ -84,7 +84,7 @@
 
             _shadowRoot.querySelector("#oView").id = _id + "_oView";
 
-            this._export_settings = {};
+            //this._export_settings = {};
             //this._export_settings.password = "";
 
             this.addEventListener("click", event => {
@@ -191,14 +191,14 @@
             this.dispatchEvent(new CustomEvent("propertiesChanged", {
                 detail: {
                     properties: {
-                        password: this.password
+                        //password: this.password
                     }
                 }
             }));
         }
 
         // SETTINGS
-        get password() {
+       /* get password() {
             return this._export_settings.password;
         }
         set password(value) {
@@ -210,7 +210,7 @@
             return [
                 "password"
             ];
-        }
+        } */
 
         attributeChangedCallback(name, oldValue, newValue) {
             if (oldValue != newValue) {
