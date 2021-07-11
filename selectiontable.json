@@ -1,58 +1,54 @@
 {
-  "id": "es.sac.selectiontable.ui5",
-  "version": "0.0.1",
-  "name": "selectionTable",
-  "description": "Selection Table",
-  "newInstancePrefix": "selectionTable",
-  "icon": "https://prantl81.github.io/ui5_selection_table/icon.png",
-  "vendor": "evosight",
-  "eula": "",
-  "license": "",
-  "imports": [ "input-controls" ],
-  "webcomponents": [
-    {
-      "kind": "main",
-      "tag": "es-sac-selectiontable-ui5",
-      "url": "https://prantl81.github.io/ui5_selection_table/selectiontable.js",
-      "integrity": "",
-      "ignoreIntegrity": true
-    }
-  ],
-  "properties": {
-    "metadata": {
-      "type": "string",
-      "description": "For internal use",
-      "default": ""
-    },
-    "columns": {
-      "type": "string",
-      "description": "columns separated by |",
-      "default": ""
-    }
-  },
-  "methods": {
-    "addRow": {
-      "returnType": "string",
-      "description": "Add a row",
-      "parameters": [],
-    },
-    "deleteRow": {
-      "description": "Delete row by ID",
-      "parameters": [
-        {
-          "id": "value"
-        }
-      ]
-    },
-   "DelelteAllRows": {
-      "returnType": "string",
-      "description": "Deletes all the table content",
-      "parameters": [],
-    }
-  },
-  "events": {
-  	"onStart": {
-      "description": "onStart events trigger"
-    }
-  }
+	"id": "es.sac.selectiontable.ui5",
+	"version": "0.0.1",
+	"name": "selectionTable",
+	"description": "Selection Table",
+	"newInstancePrefix": "selectionTable",
+	"icon": "https://prantl81.github.io/ui5_selection_table/icon.png",
+	"vendor": "evosight",
+	"eula": "",
+	"license": "",
+	"imports": ["input-controls"],
+	"webcomponents": [{
+		"kind": "main",
+		"tag": "es-sac-selectiontable-ui5",
+		"url": "https://prantl81.github.io/ui5_selection_table/selectiontable.js",
+		"integrity": "",
+		"ignoreIntegrity": true
+	}],
+	"properties": {
+		"metadata": {
+			"type": "string",
+			"description": "For internal use",
+			"default": ""
+		},
+		"columns": {
+			"type": "string",
+			"description": "columns separated by |",
+			"default": ""
+		}
+	},
+	"methods": {
+		"addRow": {
+			"returnType": "string",
+			"description": "Add a row",
+			"parameters": []
+		},
+		"deleteRow": {
+			"description": "Delete row by ID",
+			"parameters": [{
+				"id": "value"
+			}]
+		},
+		"DelelteAllRows": {
+			"returnType": "string",
+			"description": "Deletes all the table content",
+			"parameters": []
+		}
+	},
+	"events": {
+		"onStart": {
+			"description": "onStart events trigger"
+		}
+	}
 }
