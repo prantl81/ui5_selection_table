@@ -297,7 +297,7 @@
 
                                    onBeforeRendering: function() {
                                      this.byId('oTable').setModel(this.jModel);
-                                     window.globVar_UI5_Table = this.byId('ins');
+                                     window.globVar_UI5_Table = this.byId('oTable');
                                    },
 
                                    sortProductId: function(oEvent) {
