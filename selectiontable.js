@@ -20,8 +20,8 @@
                 	xmlns:m="sap.m"
                   height="100%">
 	                 <m:Page
-                		showHeader="false"
-                		enableScrolling="false"
+                		showHeader="true"
+                		enableScrolling="true"
                 		class="sapUiContentPadding">
 		                  <m:content>
                   			<Table
