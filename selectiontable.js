@@ -128,10 +128,15 @@
 
         getSelectedRow(){
           let  oTable = window.globVar_UI5_Table
+          var selIndex = oTable.getSelectedIndex();
+
+          let model = table.getModel();
+          let data = model.getData();
+
           var context = oTable.getContextByIndex(oTable.getSelectedIndex());
           var value = context.getProperty("Name");
 
-          returnType = context;  
+          returnType = context;
         }
 
         connectedCallback() {
