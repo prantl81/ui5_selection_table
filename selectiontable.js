@@ -135,7 +135,11 @@
 
           let selLine = data.Products[selIndex];
 
-          let returnValue = selLine => Object.entries(selLine).map(([k, v]) => `${k}: ${v}`).join(', ');
+          let returnValue = "";
+          //Loop Over Object to get only values into
+          for (const [key, value] of Object.entries(selLineArray)) {
+            returnValue = return + "|" + ${value};
+          }
 
           returnType = returnValue;
         }
