@@ -134,12 +134,13 @@
           let data = oModel.getData();
 
           let selLine = data.Products[selIndex];
+          let returnValue = '';
+          selLine.forEach((item, i) => {
+            returnValue = returnValue + '|' + item;
+          });
+          
 
-
-          var context = oTable.getContextByIndex(oTable.getSelectedIndex());
-          var value = context.getProperty("Name");
-
-          returnType = selLine.toString;
+          returnType = returnValue
         }
 
         connectedCallback() {
