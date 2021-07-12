@@ -137,7 +137,7 @@
 
           let returnValue = selLine => Object.entries(selLine).map(([k, v]) => `${k}: ${v}`).join(', ');
 
-          returnType = returnValue
+          returnType = returnValue;
         }
 
         connectedCallback() {
