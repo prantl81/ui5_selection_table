@@ -25,7 +25,7 @@
                 		class="sapUiContentPadding">
 		                  <m:content>
                   			<Table
-                  				rows="{/ProductCollection}"
+                  				rows="{/Products}"
                   				selectionMode="MultiToggle"
                   				visibleRowCount="7"
                   				paste="onPaste"
@@ -93,6 +93,11 @@
             this.addEventListener("click", event => {
                 console.log('click');
             });
+        }
+
+        addRow(NewRow){
+          this._data.Products.push({   });
+          this.jModel.refresh();
         }
 
         connectedCallback() {
@@ -200,6 +205,8 @@
             }));
         }
 
+
+
         // SETTINGS
         get password() {
             return this._export_settings.password;
@@ -250,6 +257,20 @@
                 "use strict";
 
                 return Controller.extend("myView.Template", {
+                                   onInit: function() {
+                                   this._data = {
+                                    Products : [
+                                      { Name: 'Standard CAN'  ,  ProductId : 'RB1234 ', Quantity: 1000, DeliveryDate: 01.01.2021 },
+                                      { Name: 'Hero CAN'      ,  ProductId : 'RB1235 ', Quantity: 2000, DeliveryDate: 01.03.2021 },
+                                      { Name: 'Summer Edition',  ProductId : 'RB1236 ', Quantity: 2000, DeliveryDate: 01.03.2021  }
+                                    ]
+ 
+                                   };
+
+                                   this.jModel = new sap.ui.model.json.JSONModel();
+                                   this.jModel.setData(this._data);
+
+                                   },
                                    onButtonPress: function(oEvent) {
                                        // _password = oView.byId("passwordInput").getValue();
                                        that._firePropertiesChanged();
