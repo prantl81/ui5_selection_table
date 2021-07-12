@@ -88,14 +88,14 @@
             this._export_settings = {};
             this._export_settings.password = "";
 
-            
+
             this.addEventListener("click", event => {
                 console.log('click');
                 let  oTable = window.globVar_UI5_Table
                 var context = oTable.getContextByIndex(oTable.getSelectedIndex());
                 var value = context.getProperty("Name");
 
-                this.dispatchEvent(new CustomEvent("OnSelectionChange", {
+                this.dispatchEvent(new Event("onSelectionChange", {
                     detail: {
                         properties: {
                             password: value

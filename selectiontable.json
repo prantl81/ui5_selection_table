@@ -42,6 +42,9 @@
   "events": {
   	"onStart": {
       "description": "onStart events trigger"
-    }
+    },
+		"onSelectionChange": {
+			"description": "Selection Changed"
+		}
   }
 }
