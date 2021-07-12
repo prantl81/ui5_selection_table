@@ -21,16 +21,16 @@
                 	xmlns:m="sap.m"
                   height="100%">
 	                 <m:Page
-                		showHeader="true"
+                		showHeader="false"
                 		enableScrolling="false"
                 		class="sapUiContentPadding">
 		                  <m:content>
-                  			<Table id="ins"
+                  			<Table
+                          id="oTable"
                   				rows="{/Products}"
                   				selectionMode="MultiToggle"
                   				visibleRowCount="7"
                           sort="sortProductId"
-                  				paste="onPaste"
                   				ariaLabelledBy="title">
                   				<extension>
                   					<m:OverflowToolbar style="Clear">
@@ -44,7 +44,7 @@
                   							<m:Text text="{Name}" wrapping="false" />
                   						</template>
                   					</Column>
-                  					<Column width="11rem">
+                  					<Column width="11rem" sortProperty="ProductId">
                   						<m:Label text="Product Id" />
                   						<template>
                   							<m:Label text="{ProductId}"/>
@@ -296,7 +296,7 @@
                                    },
 
                                    onBeforeRendering: function() {
-                                     this.byId('ins').setModel(this.jModel);
+                                     this.byId('oTable').setModel(this.jModel);
                                      window.globVar_UI5_Table = this.byId('ins');
                                    },
 
@@ -305,7 +305,7 @@
                                     // let oView = this.byId('myView.Template');
                                     // let oProdIdCol = oView.byId("ProductId");
                                     // oTable.sort(oProdIdCol, this._bSortColumnDescending ? SortOrder.Descending : SortOrder.Ascending, /*extend existing sorting*/true)
-                                    // this._bSortColumnDescending = !this._bSortColumnDescending; 
+                                    // this._bSortColumnDescending = !this._bSortColumnDescending;
 
                                    },
                                    onButtonPress: function(oEvent) {
