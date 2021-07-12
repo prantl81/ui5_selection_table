@@ -215,12 +215,6 @@
             }));
         }
 
-        onSelectionChange: function(event) {
-          alert(event.getSource().getSelectedItem().getBindingContext().getObject().Name);
-          console.log(JSON.stringify(event.getSource().getSelectedItem().getBindingContext().getObject()));
-        }
-
-
 
         // SETTINGS
         get password() {
@@ -303,6 +297,11 @@
                                    onBeforeRendering: function() {
                                      this.byId('oTable').setModel(this.jModel);
                                      window.globVar_UI5_Table = this.byId('oTable');
+                                   },
+
+                                   onSelectionChange: function(event) {
+                                     alert(event.getSource().getSelectedItem().getBindingContext().getObject().Name);
+                                     console.log(JSON.stringify(event.getSource().getSelectedItem().getBindingContext().getObject()));
                                    },
 
                                    sortProductId: function(oEvent) {
