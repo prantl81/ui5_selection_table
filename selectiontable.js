@@ -46,7 +46,7 @@
                   					<Column width="11rem">
                   						<m:Label text="Product Id" />
                   						<template>
-                  							<m:Input value="{ProductId}"/>
+                  							<m:Label text="{ProductId}"/>
                   						</template>
                   					</Column>
                   					<Column width="6rem" hAlign="End">
@@ -58,11 +58,7 @@
                   					<Column width="11rem" hAlign="Center">
                   						<m:Label text="Delivery Date" />
                   						<template>
-                  							<m:DatePicker value="{
-                  								path: 'DeliveryDate',
-                  								type: 'sap.ui.model.type.Date',
-                  							  formatOptions: {source: {pattern: 'timestamp'}}
-                  							}"/>
+                  						 	<m:Label text="{DeliveryDate}" />
                   						</template>
                   					</Column>
                   				</columns>
