@@ -39,8 +39,8 @@
 					"description": "String separated by |"}]
 		},
 		"getSelectedRow": {
-			"description": "Add a new row to the table",
-			 "returnType" : "selectedRow" 
+			"description" : "Add a new row to the table",
+			 "returnType" : "string" 
 		}
   },
   "events": {
