@@ -99,9 +99,18 @@
         addRow(NewRow){
           let arrayMembers = NewRow.split('|');
 
+          let assosciated_array = {
+            Name : arrayMembers[0],
+            ProductId : arrayMembers[1],
+            Quantity  : arrayMembers[2],
+            DeliveryDate : arrayMembers[3]
+          }
+
           let  table = window.globVar_UI5_Table;
-          table.getModel().getData().Products.push(arrayMembers);
-          table.getModel().refresh();
+          let model = table.getModel();
+          let data = model.getData();
+          data.Products.push(assosciated_array);
+          model.refresh();
         }
 
         connectedCallback() {
