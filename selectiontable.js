@@ -258,17 +258,23 @@
 
                 return Controller.extend("myView.Template", {
                                    onInit: function() {
-                                   this._data = {
-                                    Products : [
-                                      { Name: 'Standard CAN'  ,  ProductId : 'RB1234 ', Quantity: 1000, DeliveryDate: 01.01.2021 },
-                                      { Name: 'Hero CAN'      ,  ProductId : 'RB1235 ', Quantity: 2000, DeliveryDate: 01.03.2021 },
-                                      { Name: 'Summer Edition',  ProductId : 'RB1236 ', Quantity: 2000, DeliveryDate: 01.03.2021  }
-                                    ]
- 
-                                   };
 
-                                   this.jModel = new sap.ui.model.json.JSONModel();
-                                   this.jModel.setData(this._data);
+                                     if (that._firstConnection === 0) {
+                                         that._firstConnection = 1;
+                                     } else {
+
+                                           this._data = {
+                                            Products : [
+                                              { Name: 'Standard CAN'  ,  ProductId : 'RB1234 ', Quantity: 1000, DeliveryDate: 01.01.2021 },
+                                              { Name: 'Hero CAN'      ,  ProductId : 'RB1235 ', Quantity: 2000, DeliveryDate: 01.03.2021 },
+                                              { Name: 'Summer Edition',  ProductId : 'RB1236 ', Quantity: 2000, DeliveryDate: 01.03.2021  }
+                                            ]
+
+                                           };
+
+                                           this.jModel = new sap.ui.model.json.JSONModel();
+                                           this.jModel.setData(this._data);
+                                      }
 
                                    },
                                    onButtonPress: function(oEvent) {
