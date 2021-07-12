@@ -96,9 +96,8 @@
         }
 
         addRow(NewRow){
-          var oModel = this.getView().getModel(),
-			    oModel.oData.Products.push(NewRow);
-			    oModel.refresh();
+          this.getModel().getData().push(NewRow)
+          this.getModel().refresh();
         }
 
         connectedCallback() {
