@@ -24,7 +24,7 @@
                 		enableScrolling="false"
                 		class="sapUiContentPadding">
 		                  <m:content>
-                  			<Table
+                  			<Table id="ins"
                   				rows="{/Products}"
                   				selectionMode="MultiToggle"
                   				visibleRowCount="7"
@@ -279,7 +279,7 @@
                                    },
 
                                    onBeforeRendering: function() {
-                                     this.byId('ins').setModel(this.jModel);
+                                     that_.byId('ins').setModel(this.jModel);
                                    },
                                    onButtonPress: function(oEvent) {
                                        // _password = oView.byId("passwordInput").getValue();
