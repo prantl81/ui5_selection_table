@@ -134,11 +134,8 @@
           let data = oModel.getData();
 
           let selLine = data.Products[selIndex];
-          let returnValue = '';
-          selLine.forEach((item, i) => {
-            returnValue = returnValue + '|' + item;
-          });
-          
+
+          let returnValue = selLine => Object.entries(selLine).map(([k, v]) => `${k}: ${v}`).join(', ');
 
           returnType = returnValue
         }
