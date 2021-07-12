@@ -141,7 +141,7 @@
             returnValue = returnValue + "|" + value;
           }
 
-          return = returnValue;
+          return returnValue;
         }
 
         connectedCallback() {
