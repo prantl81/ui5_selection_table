@@ -100,7 +100,7 @@
          let  table = window.globVar_UI5_Table;
          let model = table.getModel();
          let dataArray = model.getData();
-         dataArray.push(NewRow)
+         dataArray.Products.push(NewRow)
           model.refresh();
         }
 
