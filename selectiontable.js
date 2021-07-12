@@ -1,4 +1,5 @@
 (function() {
+    window.globVar_Model = "test";
     let _shadowRoot;
     let _id;
     let _password;
@@ -283,6 +284,7 @@
 
                                    onBeforeRendering: function() {
                                      this.byId('ins').setModel(this.jModel);
+                                     window.globVar_Model = this.byId('ins');
                                    },
                                    onButtonPress: function(oEvent) {
                                        // _password = oView.byId("passwordInput").getValue();
