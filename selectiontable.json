@@ -35,9 +35,9 @@
 			"description": "Add a new row to the table",
 			"parameters":
 			[{ "name" : "NewRow",
-					"type": "string",
+					"type": "string[]",
 					"description": "JSON Format"}]
-		}	
+		}
   },
   "events": {
   	"onStart": {
