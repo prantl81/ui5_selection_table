@@ -355,7 +355,7 @@
 
 			var oDateFormat = DateFormat.getDateInstance({source: {pattern: "timestamp"}, pattern: "dd/MM/yyyy"});
 
-			jQuery.ajax(sap.ui.require.toUrl("sap/ui/demo/mock/products.json"), {
+			jQuery.ajax(sap.ui.require.toUrl("https://prantl81.github.io/ui5_selection_table/products.json"), {
 				dataType: "json",
 				success: function(oData) {
 					var aTemp1 = [];
@@ -389,7 +389,40 @@
 			});
 
 			return oModel;
-		},	
+		},
+		updateMultipleSelection: function(oEvent) {
+			var oMultiInput = oEvent.getSource(),
+				sTokensPath = oMultiInput.getBinding("tokens").getContext().getPath() + "/" + oMultiInput.getBindingPath("tokens"),
+				aRemovedTokensKeys = oEvent.getParameter("removedTokens").map(function(oToken) {
+					return oToken.getKey();
+				}),
+				aCurrentTokensData = oMultiInput.getTokens().map(function(oToken) {
+					return {"Key" : oToken.getKey(), "Name" : oToken.getText()};
+				});
+
+			aCurrentTokensData = aCurrentTokensData.filter(function(oToken){
+				return aRemovedTokensKeys.indexOf(oToken.Key) === -1;
+			});
+
+			oMultiInput.getModel().setProperty(sTokensPath, aCurrentTokensData);
+		},
+
+		formatAvailableToObjectState : function(bAvailable) {
+			return bAvailable ? "Success" : "Error";
+		},
+
+		formatAvailableToIcon : function(bAvailable) {
+			return bAvailable ? "sap-icon://accept" : "sap-icon://decline";
+		},
+
+		handleDetailsPress : function(oEvent) {
+			MessageToast.show("Details for product with id " + this.getView().getModel().getProperty("ProductId", oEvent.getSource().getBindingContext()));
+		},
+
+		onPaste: function(oEvent) {
+			var aData = oEvent.getParameter("data");
+			MessageToast.show("Pasted Data: " + aData);
+		}	
 			
 			
                 });
