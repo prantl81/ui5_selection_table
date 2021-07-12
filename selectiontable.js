@@ -301,11 +301,12 @@
                                    },
 
                                    sortProductId: function(oEvent) {
-                                     let oTable = window.globVar_UI5_Table;
-                                     let oView = this.byId('myView.Template');
-                                     let oProdIdCol = oView.byId("ProductId");
-                                     oTable.sort(oProdIdCol, this._bSortColumnDescending ? SortOrder.Descending : SortOrder.Ascending, /*extend existing sorting*/true)
-                                     this._bSortColumnDescending = !this._bSortColumnDescending;
+                                    // let oTable = window.globVar_UI5_Table;
+                                    // let oView = this.byId('myView.Template');
+                                    // let oProdIdCol = oView.byId("ProductId");
+                                    // oTable.sort(oProdIdCol, this._bSortColumnDescending ? SortOrder.Descending : SortOrder.Ascending, /*extend existing sorting*/true)
+                                    // this._bSortColumnDescending = !this._bSortColumnDescending; 
+
                                    },
                                    onButtonPress: function(oEvent) {
                                        // _password = oView.byId("passwordInput").getValue();
