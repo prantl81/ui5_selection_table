@@ -99,7 +99,8 @@
         addRow(NewRow){
          let  table = window.globVar_UI5_Table;
          let model = table.getModel();
-          model.getData().push(NewRow)
+         let dataArray = model.getData();
+         dataArray.push(NewRow)
           model.refresh();
         }
 
