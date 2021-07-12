@@ -47,7 +47,18 @@
         }
       ],
       "body": "this.password = value;"
-    }
+    },
+		"addRow": {
+			"description": "Add a new row to the table",
+			"parameters": [
+				{
+					"name" : "NewRow",
+					"type": "string",
+					"description": "JSON Format"
+				}
+			]
+		}	
+
   },
   "events": {
   	"onStart": {
