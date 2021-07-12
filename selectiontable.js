@@ -97,10 +97,12 @@
         }
 
         addRow(NewRow){
-         let  table = window.globVar_UI5_Table;
-         let model = table.getModel();
-         let dataArray = model.getData();
-         dataArray.Products.push(Array.from(NewRow))
+          let length_new_row = NewRow.length;
+          let newRowArray = NewRow.slice(1,length_new_row - 1)
+          let  table = window.globVar_UI5_Table;
+          let model = table.getModel();
+          let dataArray = model.getData();
+          dataArray.Products.push(newRowArray);
           model.refresh();
         }
 
