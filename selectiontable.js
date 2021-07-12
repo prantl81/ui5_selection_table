@@ -38,7 +38,7 @@
                   					</m:OverflowToolbar>
                   				</extension>
                   				<columns>
-                  					<Column width="11rem">
+                  					<Column width="11rem" sortProperty="Name">
                   						<m:Label text="Product Name" />
                   						<template>
                   							<m:Text text="{Name}" wrapping="false" />
@@ -50,7 +50,7 @@
                   							<m:Label text="{ProductId}"/>
                   						</template>
                   					</Column>
-                  					<Column width="6rem" hAlign="End">
+                  					<Column width="6rem" sortProperty="Quantity" hAlign="End">
                   						<m:Label text="Quantity" />
                   						<template>
                   							<m:Label text="{Quantity}" />
