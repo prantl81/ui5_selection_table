@@ -279,7 +279,7 @@
                                    },
 
                                    onBeforeRendering: function() {
-                                     this_.byId('ins').setModel(this.jModel);
+                                     this.byId('ins').setModel(this.jModel);
                                    },
                                    onButtonPress: function(oEvent) {
                                        // _password = oView.byId("passwordInput").getValue();
