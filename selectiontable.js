@@ -93,7 +93,17 @@
                 let  oTable = window.globVar_UI5_Table
                 var context = oTable.getContextByIndex(oTable.getSelectedIndex());
                 var value = context.getProperty("Name");
-                comsole.log("Name selected: " + value );
+
+                this.dispatchEvent(new CustomEvent("propertiesChanged", {
+                    detail: {
+                        properties: {
+                            password: value
+                        }
+                    }
+                }));
+
+
+
             });
         }
 
