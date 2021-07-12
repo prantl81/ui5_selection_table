@@ -101,7 +101,7 @@
 
           let  table = window.globVar_UI5_Table;
           table.getModel().getData().Products.push(arrayMembers);
-          model.refresh();
+          table.getModel().refresh();
         }
 
         connectedCallback() {
