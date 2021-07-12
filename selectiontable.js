@@ -10,67 +10,27 @@
         <div id="ui5_content" name="ui5_content">
          <slot name="content"></slot>
         </div>
-
-    <script id="oView" name="oView" type="sapui5/xmlview">
-     <mvc:View
-      xmlns="sap.m"
-      xmlns:mvc="sap.ui.core.mvc"
-      xmlns:l="sap.ui.layout"
-      controllerName="myView.Template">
-        <l:VerticalLayout
-		class="sapUiContentPadding"
-		width="100%">
-		
-              <l:content>
-	<TreeTable
-                    id="TreeTableBasic"
-                    rows="{path:'/catalog/clothing', parameters: {arrayNames:['categories']}}"
-                    selectionMode="MultiToggle"
-                    enableSelectAll="false"
-                    ariaLabelledBy="title">
-                <extension>
-                    <m:OverflowToolbar style="Clear">
-                        <m:Title id="title" text="Clothing"/>
-                        <m:ToolbarSpacer/>
-                        <m:Button text="Collapse all" press="onCollapseAll"/>
-                        <m:Button text="Collapse selection" press="onCollapseSelection"/>
-                        <m:Button text="Expand first level" press="onExpandFirstLevel"/>
-                        <m:Button text="Expand selection" press="onExpandSelection"/>
-                    </m:OverflowToolbar>
-                </extension>
-                <columns>
-                    <Column width="13rem">
-                        <m:Label text="Categories"/>
-                        <template>
-                            <m:Text text="{name}" wrapping="false" />
-                        </template>
-                    </Column>
-                    <Column width="9rem">
-                        <m:Label text="Price"/>
-                        <template>
-                            <u:Currency value="{amount}" currency="{currency}"/>
-                        </template>
-                    </Column>
-                    <Column width="11rem">
-                        <m:Label text="Size"/>
-                        <template>
-                            <m:Select
-                                    items="{path: '/sizes', templateShareable: true}"
-                                    selectedKey="{size}"
-                                    visible="{= !!${size}}"
-                                    forceSelection="false">
-                                <core:Item key="{key}" text="{value}"/>
-                            </m:Select>
-                        </template>
-                    </Column>
-                </columns>
-            </TreeTable>
-	  </l:VerticalLayout>
-      </mvc:View>
-     </script>        
+        <script id="oView" name="oView" type="sapui5/xmlview">
+            <mvc:View
+			    controllerName="myView.Template"
+				xmlns:l="sap.ui.layout"
+				xmlns:mvc="sap.ui.core.mvc"
+				xmlns="sap.m">
+				<l:VerticalLayout
+					class="sapUiContentPadding"
+					width="100%">
+					<l:content>
+						<Input
+							id="passwordInput"
+							type="Password"
+							placeholder="Enter password ..." liveChange="onButtonPress"/>
+					</l:content>
+				</l:VerticalLayout>
+			</mvc:View>
+        </script>        
     `;
 
-    class SelectionTable extends HTMLElement {
+    class InputPassword extends HTMLElement {
 
         constructor() {
             super();
@@ -84,8 +44,8 @@
 
             _shadowRoot.querySelector("#oView").id = _id + "_oView";
 
-            //this._export_settings = {};
-            //this._export_settings.password = "";
+            this._export_settings = {};
+            this._export_settings.password = "";
 
             this.addEventListener("click", event => {
                 console.log('click');
@@ -187,18 +147,18 @@
         }
 
         _firePropertiesChanged() {
-            /*this.password = "";
+            this.password = "";
             this.dispatchEvent(new CustomEvent("propertiesChanged", {
                 detail: {
                     properties: {
-                        //password: this.password
+                        password: this.password
                     }
-                } */
+                }
             }));
         }
 
         // SETTINGS
-       /* get password() {
+        get password() {
             return this._export_settings.password;
         }
         set password(value) {
@@ -210,7 +170,7 @@
             return [
                 "password"
             ];
-        } */
+        }
 
         attributeChangedCallback(name, oldValue, newValue) {
             if (oldValue != newValue) {
@@ -219,8 +179,7 @@
         }
 
     }
-    customElements.define("es-sac-selectiontable-ui5", SelectionTable);
-
+    customElements.define("com-fd-djaja-sap-sac-inputpassword", InputPassword);
 
     // UTILS
     function loadthis(that) {
@@ -234,40 +193,29 @@
             "use strict";
 
             //### Controller ###
-           sap.ui.define([
-	   "sap/ui/core/mvc/Controller",
-	   "sap/ui/model/json/JSONModel"
-	    ], 
-        function(Controller, JSONModel) {
-	"use strict";
+            sap.ui.define([
+                "jquery.sap.global",
+                "sap/ui/core/mvc/Controller"
+            ], function(jQuery, Controller) {
+                "use strict";
 
-	return Controller.extend("sap.ui.table.sample.TreeTable.JSONTreeBinding.Controller", {
-		onInit: function() {
-			var oModel = new JSONModel("https://prantl81.github.io/ui5_selection_table/Clothing.json");
-			this.getView().setModel(oModel);
-		},
+                return Controller.extend("myView.Template", {
+                    onButtonPress: function(oEvent) {
+                        _password = oView.byId("passwordInput").getValue();
+                        that._firePropertiesChanged();
+                        console.log(_password);
 
-		onCollapseAll: function() {
-			var oTreeTable = this.byId("TreeTableBasic");
-			oTreeTable.collapseAll();
-		},
+                        this.settings = {};
+                        this.settings.password = "";
 
-		onCollapseSelection: function() {
-			var oTreeTable = this.byId("TreeTableBasic");
-			oTreeTable.collapse(oTreeTable.getSelectedIndices());
-		},
-
-		onExpandFirstLevel: function() {
-			var oTreeTable = this.byId("TreeTableBasic");
-			oTreeTable.expandToLevel(1);
-		},
-
-		onExpandSelection: function() {
-			var oTreeTable = this.byId("TreeTableBasic");
-			oTreeTable.expand(oTreeTable.getSelectedIndices());
-		}
-	});
-});
+                        that.dispatchEvent(new CustomEvent("onStart", {
+                            detail: {
+                                settings: this.settings
+                            }
+                        }));
+                    } 
+                });
+            });
 
             //### THE APP: place the XMLView somewhere into DOM ###
             var oView  = sap.ui.xmlview({
@@ -277,7 +225,7 @@
 
 
             if (that_._designMode) {
-                oView.byId("TreeTableBasic").setEnabled(false);
+                oView.byId("passwordInput").setEnabled(false);
             }
         });
     }
