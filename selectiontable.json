@@ -1,18 +1,18 @@
 {
-	"id": "es.sac.selectiontable.ui5",
+	"id": "tp.sac.selectiontable.ui5",
 	"version": "0.0.1",
 	"name": "selectionTable",
 	"description": "Selection Table",
 	"newInstancePrefix": "selectionTable",
 	"icon": "https://prantl81.github.io/ui5_selection_table/icon.png",
-	"vendor": "evosight",
+	"vendor": "tp",
 	"eula": "",
 	"license": "",
 	"imports": ["input-controls"],
 	  "webcomponents": [
     {
       "kind": "main",
-      "tag": "com-fd-djaja-sap-sac-inputpassword",
+      "tag": "tp-sac-selectiontable-ui5",
       "url": "https://prantl81.github.io/inputpassword/inputpassword.js",
       "integrity": "",
       "ignoreIntegrity": true
