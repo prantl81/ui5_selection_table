@@ -13,24 +13,149 @@
         <script id="oView" name="oView" type="sapui5/xmlview">
             <mvc:View
 			    controllerName="myView.Template"
-				xmlns:l="sap.ui.layout"
-				xmlns:mvc="sap.ui.core.mvc"
-				xmlns="sap.m">
-				<l:VerticalLayout
-					class="sapUiContentPadding"
-					width="100%">
-					<l:content>
-						<Input
-							id="passwordInput"
-							type="Password"
-							placeholder="Enter password ..." liveChange="onButtonPress"/>
-					</l:content>
-				</l:VerticalLayout>
-			</mvc:View>
+					xmlns="sap.ui.table"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:u="sap.ui.unified"
+	xmlns:c="sap.ui.core"
+	xmlns:m="sap.m"
+    height="100%">
+	<m:Page
+		showHeader="false"
+		enableScrolling="false"
+		class="sapUiContentPadding">
+		<m:content>
+			<Table
+				rows="{/ProductCollection}"
+				selectionMode="MultiToggle"
+				visibleRowCount="7"
+				paste="onPaste"
+				ariaLabelledBy="title">
+				<extension>
+					<m:OverflowToolbar style="Clear">
+						<m:Title id="title" text="Products"/>
+					</m:OverflowToolbar>
+				</extension>
+				<columns>
+					<Column width="11rem">
+						<m:Label text="Product Name" />
+						<template>
+							<m:Text text="{Name}" wrapping="false" />
+						</template>
+					</Column>
+					<Column width="11rem">
+						<m:Label text="Product Id" />
+						<template>
+							<m:Input value="{ProductId}"/>
+						</template>
+					</Column>
+					<Column width="6rem" hAlign="End">
+						<m:Label text="Quantity" />
+						<template>
+							<m:Label text="{Quantity}" />
+						</template>
+					</Column>
+					<Column width="9rem">
+						<m:Label text="Status" />
+						<template>
+							<m:ObjectStatus text="{Status}" state="{
+								path: 'Available',
+								formatter: '.formatAvailableToObjectState'
+							}"/>
+						</template>
+					</Column>
+					<Column width="9rem">
+						<m:Label text="Price" />
+						<template>
+							<u:Currency value="{Price}" currency="{CurrencyCode}"/>
+						</template>
+					</Column>
+					<Column width="12rem">
+						<m:Label text="Supplier" />
+						<template>
+							<m:ComboBox value="{SupplierName}" items="{/Suppliers}">
+								<c:Item text="{Name}"/>
+							</m:ComboBox>
+						</template>
+					</Column>
+					<Column width="9rem">
+						<m:Label text="Image" />
+						<template>
+							<m:Link text="Show Image" href="{ProductPicUrl}" target="_blank"/>
+						</template>
+					</Column>
+					<Column width="9rem">
+						<m:Label text="Details" />
+						<template>
+							<m:Button text="Show Details" press="handleDetailsPress"/>
+						</template>
+					</Column>
+					<Column width="7rem">
+						<m:Label text="Heavy Weight" />
+						<template>
+							<m:CheckBox selected="{
+								path: 'Heavy',
+								type: 'sap.ui.model.type.String'
+							}"/>
+						</template>
+					</Column>
+					<Column width="12rem">
+						<m:Label text="Main Category" />
+						<template>
+							<m:Select selectedKey="{Category}" items="{/Categories}">
+								<c:Item text="{Name}" key="{Name}"/>
+							</m:Select>
+						</template>
+					</Column>
+					<Column width="12rem">
+						<m:Label text="Additional Categories" />
+						<template>
+							<m:MultiInput
+								tokenUpdate="updateMultipleSelection"
+								value="{AdditionalCategory}"
+								tokens="{AdditionalCategoriesSelection}"
+								suggestionItems="{
+									path: '/Categories',
+									sorter: { path: 'Name' }
+								}"
+								showValueHelp="false"
+								>
+								<m:tokens>
+									<m:Token key="{Key}" text="{Name}"/>
+								</m:tokens>
+								<m:suggestionItems>
+									<c:Item key="{ProductId}" text="{Name}" />
+								</m:suggestionItems>
+							</m:MultiInput>
+						</template>
+					</Column>
+					<Column width="6rem" hAlign="Center">
+						<m:Label text="Status" />
+						<template>
+							<c:Icon src="{
+								path: 'Available',
+								formatter: '.formatAvailableToIcon'
+							}"/>
+						</template>
+					</Column>
+					<Column width="11rem" hAlign="Center">
+						<m:Label text="Delivery Date" />
+						<template>
+							<m:DatePicker value="{
+								path: 'DeliveryDate',
+								type: 'sap.ui.model.type.Date',
+								formatOptions: {source: {pattern: 'timestamp'}}
+							}"/>
+						</template>
+					</Column>
+				</columns>
+			</Table>
+		</m:content>
+	</m:Page>
+</mvc:View>
         </script>        
     `;
 
-    class InputPassword extends HTMLElement {
+    class Ui5CustTable extends HTMLElement {
 
         constructor() {
             super();
@@ -179,7 +304,7 @@
         }
 
     }
-    customElements.define("com-fd-djaja-sap-sac-inputpassword", InputPassword);
+    customElements.define("tp-sac-selectiontable-ui5", Ui5CustTable);
 
     // UTILS
     function loadthis(that) {
@@ -194,9 +319,13 @@
 
             //### Controller ###
             sap.ui.define([
-                "jquery.sap.global",
-                "sap/ui/core/mvc/Controller"
-            ], function(jQuery, Controller) {
+               "sap/base/Log",
+		"sap/ui/core/mvc/Controller",
+		"sap/ui/model/json/JSONModel",
+		"sap/m/MessageToast",
+		"sap/ui/core/format/DateFormat",
+		"sap/ui/thirdparty/jquery"
+            ], function(Log, Controller, JSONModel, MessageToast, DateFormat, jQuery) {
                 "use strict";
 
                 return Controller.extend("myView.Template", {
@@ -214,6 +343,55 @@
                             }
                         }));
                     } 
+			
+		    onInit : function() {
+			// set explored app's demo model on this sample
+			var oJSONModel = this.initSampleDataModel();
+			this.getView().setModel(oJSONModel);
+		},
+
+		initSampleDataModel : function() {
+			var oModel = new JSONModel();
+
+			var oDateFormat = DateFormat.getDateInstance({source: {pattern: "timestamp"}, pattern: "dd/MM/yyyy"});
+
+			jQuery.ajax(sap.ui.require.toUrl("sap/ui/demo/mock/products.json"), {
+				dataType: "json",
+				success: function(oData) {
+					var aTemp1 = [];
+					var aTemp2 = [];
+					var aSuppliersData = [];
+					var aCategoryData = [];
+					for (var i = 0; i < oData.ProductCollection.length; i++) {
+						var oProduct = oData.ProductCollection[i];
+						if (oProduct.SupplierName && aTemp1.indexOf(oProduct.SupplierName) < 0) {
+							aTemp1.push(oProduct.SupplierName);
+							aSuppliersData.push({Name: oProduct.SupplierName});
+						}
+						if (oProduct.Category && aTemp2.indexOf(oProduct.Category) < 0) {
+							aTemp2.push(oProduct.Category);
+							aCategoryData.push({Name: oProduct.Category});
+						}
+						oProduct.DeliveryDate = (new Date()).getTime() - (i % 10 * 4 * 24 * 60 * 60 * 1000);
+						oProduct.DeliveryDateStr = oDateFormat.format(new Date(oProduct.DeliveryDate));
+						oProduct.Heavy = oProduct.WeightMeasure > 1000 ? "true" : "false";
+						oProduct.Available = oProduct.Status == "Available" ? true : false;
+					}
+
+					oData.Suppliers = aSuppliersData;
+					oData.Categories = aCategoryData;
+
+					oModel.setData(oData);
+				},
+				error: function() {
+					Log.error("failed to load json");
+				}
+			});
+
+			return oModel;
+		},	
+			
+			
                 });
             });
 
