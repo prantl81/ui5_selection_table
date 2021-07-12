@@ -1,5 +1,5 @@
 (function() {
-    window.globVar_Model = "test";
+    window.globVar_UI5_Table = "test";
     let _shadowRoot;
     let _id;
     let _password;
@@ -97,7 +97,8 @@
         }
 
         addRow(NewRow){
-         let  model = window.globVar_Model;
+         let  table = window.globVar_UI5_Table;
+         let model = table.getModel();
           model.getData().push(NewRow)
           model.refresh();
         }
@@ -282,7 +283,7 @@
 
                                    onBeforeRendering: function() {
                                      this.byId('ins').setModel(this.jModel);
-                                     window.globVar_Model = this.byId('ins');
+                                     window.globVar_UI5_Table = this.byId('ins');
                                    },
                                    onButtonPress: function(oEvent) {
                                        // _password = oView.byId("passwordInput").getValue();
