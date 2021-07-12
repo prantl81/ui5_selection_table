@@ -138,10 +138,10 @@
           let returnValue = "";
           //Loop Over Object to get only values into
           for (const [key, value] of Object.entries(selLine)) {
-            returnValue = returnValue + "|" + '${value}';
+            returnValue = returnValue + "|" + value;
           }
 
-          returnType = returnValue;
+          this.returnType = returnValue;
         }
 
         connectedCallback() {
