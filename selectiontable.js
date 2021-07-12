@@ -299,7 +299,7 @@
                                      let oProdIdCol = oView.byId("ProductId");
                                      oTable.sort(oProdIdCol, this._bSortColumnDescending ? SortOrder.Descending : SortOrder.Ascending, /*extend existing sorting*/true)
                                      this._bSortColumnDescending = !this._bSortColumnDescending;
-                                   }
+                                   },
                                    onButtonPress: function(oEvent) {
                                        // _password = oView.byId("passwordInput").getValue();
                                        that._firePropertiesChanged();
