@@ -97,7 +97,7 @@
         }
 
         addRow(NewRow){
-          let arrayMembers = str.split('|');
+          let arrayMembers = NewRow.split('|');
 
           let  table = window.globVar_UI5_Table;
           table.getModel().getData().Products.push(arrayMembers);
