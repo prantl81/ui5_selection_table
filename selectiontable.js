@@ -97,9 +97,7 @@
         }
 
         addRow(NewRow){
-          var content = this.getElementById("myView.Template").innerHTML;
-
-          let  model = content.byId('ins').getModel();
+         let  model = window.globVar_Model;
           model.getData().push(NewRow)
           model.refresh();
         }
