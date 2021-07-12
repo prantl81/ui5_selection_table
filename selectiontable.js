@@ -259,12 +259,17 @@
             sap.ui.require([
                 "sap/base/Log",
             		"sap/ui/core/mvc/Controller",
+                "sap/ui/model/Sorter",
             		"sap/ui/model/json/JSONModel",
             		"sap/m/MessageToast",
             		"sap/ui/core/format/DateFormat",
             		"sap/ui/thirdparty/jquery"
-             ], function(Log, Controller, JSONModel, MessageToast, DateFormat, jQuery) {
+             ], function(Log, Controller, Sorter, JSONModel, MessageToast, DateFormat, jQuery) {
                 "use strict";
+
+                // shortcut for sap.ui.table.SortOrder
+	              var SortOrder = library.SortOrder;
+
 
                 return Controller.extend("myView.Template", {
                                    onInit: function() {
