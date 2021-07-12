@@ -141,7 +141,7 @@
             returnValue = returnValue + "|" + value;
           }
 
-          this.returnType = returnValue;
+          return = returnValue;
         }
 
         connectedCallback() {
