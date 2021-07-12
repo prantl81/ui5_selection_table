@@ -212,7 +212,7 @@
                                 components: components,
                                 vars: app.globalVars
                             });
-
+			//test comment
                             if (metadata != this.metadata) {
                                 this.metadata = metadata;
 
