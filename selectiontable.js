@@ -152,7 +152,7 @@
 		</m:content>
 	</m:Page>
 </mvc:View>
-        </script>        
+        </script>
     `;
 
     class Ui5CustTable extends HTMLElement {
@@ -255,7 +255,7 @@
         }
 
         disconnectedCallback() {
-            if (this._subscription) { 
+            if (this._subscription) {
                 this._subscription();
                 this._subscription = null;
             }
@@ -309,7 +309,7 @@
     // UTILS
     function loadthis(that) {
         var that_ = that;
-      
+
         let content = document.createElement('div');
         content.slot = "content";
         that_.appendChild(content);
@@ -319,13 +319,15 @@
 
             //### Controller ###
             sap.ui.define([
-               "sap/base/Log",
-		"sap/ui/core/mvc/Controller",
-		"sap/ui/model/json/JSONModel",
-		"sap/m/MessageToast",
-		"sap/ui/core/format/DateFormat",
-		"sap/ui/thirdparty/jquery"
-            ], function(Log, Controller, JSONModel, MessageToast, DateFormat, jQuery) {
+                "sap/base/Log",
+            		"sap/ui/core/mvc/Controller",
+            		"sap/ui/model/json/JSONModel",
+            		"sap/m/MessageToast",
+            		"sap/ui/core/format/DateFormat",
+            		"sap/ui/thirdparty/jquery"
+            ],
+
+            function(Log, Controller, JSONModel, MessageToast, DateFormat, jQuery) {
                 "use strict";
 
                 return Controller.extend("myView.Template", {
@@ -342,8 +344,8 @@
                                 settings: this.settings
                             }
                         }));
-                    } 
-			
+                    }
+
 		    onInit : function() {
 			// set explored app's demo model on this sample
 			var oJSONModel = this.initSampleDataModel();
@@ -422,9 +424,9 @@
 		onPaste: function(oEvent) {
 			var aData = oEvent.getParameter("data");
 			MessageToast.show("Pasted Data: " + aData);
-		}	
-			
-			
+		}
+
+
                 });
             });
 
@@ -447,5 +449,5 @@
                 v = c === "x" ? r : (r & 0x3 | 0x8);
             return v.toString(16);
         });
-    }  
+    }
 })();
