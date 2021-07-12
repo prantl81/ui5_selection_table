@@ -96,7 +96,7 @@
         }
 
         addRow(NewRow){
-          this._data.Products.push({   });
+          this._data.Products.push({ NewRow });
           this.jModel.refresh();
         }
 
