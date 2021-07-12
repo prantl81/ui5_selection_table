@@ -137,7 +137,7 @@
 
           let returnValue = "";
           //Loop Over Object to get only values into
-          for (const [key, value] of Object.entries(selLineArray)) {
+          for (const [key, value] of Object.entries(selLine)) {
             returnValue = returnValue + "|" + '${value}';
           }
 
