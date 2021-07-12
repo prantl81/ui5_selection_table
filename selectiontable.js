@@ -263,8 +263,10 @@
             		"sap/ui/model/json/JSONModel",
             		"sap/m/MessageToast",
             		"sap/ui/core/format/DateFormat",
-            		"sap/ui/thirdparty/jquery"
-             ], function(Log, Controller, Sorter, JSONModel, MessageToast, DateFormat, jQuery) {
+                "sap/m/ToolbarSpacer",
+                "sap/ui/table/library",
+                "sap/ui/thirdparty/jquery"
+             ], function(Log, Controller, Sorter, JSONModel, MessageToast, DateFormat, ToolbarSpacer, library, jQuery) {
                 "use strict";
 
                 // shortcut for sap.ui.table.SortOrder
