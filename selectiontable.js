@@ -28,8 +28,8 @@
                   			<Table
                           id="oTable"
                   				rows="{/Products}"
-                  				selectionMode="MultiToggle"
-                  				visibleRowCount="7"
+                  				selectionMode="Single"
+                  				visibleRowCount="15"
                           sort="sortProductId"
                   				ariaLabelledBy="title">
                   				<extension>
