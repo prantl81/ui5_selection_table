@@ -29,6 +29,7 @@
                   				rows="{/Products}"
                   				selectionMode="MultiToggle"
                   				visibleRowCount="7"
+                          sort="sortProductId"
                   				paste="onPaste"
                   				ariaLabelledBy="title">
                   				<extension>
@@ -255,7 +256,7 @@
             "use strict";
 
             //### Controller ###
-            sap.ui.define([
+            sap.ui.require([
                 "sap/base/Log",
             		"sap/ui/core/mvc/Controller",
             		"sap/ui/model/json/JSONModel",
@@ -291,6 +292,14 @@
                                      this.byId('ins').setModel(this.jModel);
                                      window.globVar_UI5_Table = this.byId('ins');
                                    },
+
+                                   sortProductId: function(oEvent) {
+                                     let oTable = window.globVar_UI5_Table;
+                                     let oView = this.byId('myView.Template');
+                                     let oProdIdCol = oView.byId("ProductId");
+                                     oTable.sort(oProdIdCol, this._bSortColumnDescending ? SortOrder.Descending : SortOrder.Ascending, /*extend existing sorting*/true)
+                                     this._bSortColumnDescending = !this._bSortColumnDescending;
+                                   }
                                    onButtonPress: function(oEvent) {
                                        // _password = oView.byId("passwordInput").getValue();
                                        that._firePropertiesChanged();
