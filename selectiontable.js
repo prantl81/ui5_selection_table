@@ -97,11 +97,11 @@
         }
 
         addRow(NewRow){
-          let slice = NewRow.slice(1,89);
+
           let  table = window.globVar_UI5_Table;
           let model = table.getModel();
           let dataArray = model.getData();
-          dataArray.Products.push({ Name: 'Added CANs'  ,  ProductId : 'RBXYZ', Quantity: 500, DeliveryDate: 20211201 });
+          dataArray.Products.push(NewRow);
           model.refresh();
         }
 
