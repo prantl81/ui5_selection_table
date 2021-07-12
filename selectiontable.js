@@ -29,6 +29,7 @@
                           id="oTable"
                   				rows="{/Products}"
                   				selectionMode="Single"
+                          selectionChange="onSelectionChange"
                   				visibleRowCount="15"
                           sort="sortProductId"
                   				ariaLabelledBy="title">
@@ -299,7 +300,7 @@
                                      window.globVar_UI5_Table = this.byId('oTable');
                                    },
 
-                                   onSelectionChange: function(event) {
+                                   onSelectionChange: function(oEvent) {
                                      alert(event.getSource().getSelectedItem().getBindingContext().getObject().Name);
                                      console.log(JSON.stringify(event.getSource().getSelectedItem().getBindingContext().getObject()));
                                    },
