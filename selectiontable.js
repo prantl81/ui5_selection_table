@@ -215,6 +215,11 @@
             }));
         }
 
+        onSelectionChange: function(event) {
+          alert(event.getSource().getSelectedItem().getBindingContext().getObject().Name);
+          console.log(JSON.stringify(event.getSource().getSelectedItem().getBindingContext().getObject()));
+        }
+
 
 
         // SETTINGS
