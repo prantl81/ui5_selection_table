@@ -133,7 +133,7 @@
           let oModel = oTable.getModel();
           let data = oModel.getData();
 
-          let selLine = data[selIndex];
+          let selLine = data.Products[selIndex];
 
 
           var context = oTable.getContextByIndex(oTable.getSelectedIndex());
