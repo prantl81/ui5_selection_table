@@ -91,7 +91,8 @@
 
             this.addEventListener("click", event => {
                 console.log('click');
-                var context = this.getContextByIndex(this.getSelectedIndex());
+                let  oTable = window.globVar_UI5_Table
+                var context = oTable.getContextByIndex(this.getSelectedIndex());
                 var value = context.getProperty("Name");
                 comsole.log("Name selected: " + value );
             });
