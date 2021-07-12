@@ -29,7 +29,6 @@
                           id="oTable"
                   				rows="{/Products}"
                   				selectionMode="Single"
-                          selectionChange="onSelectionChange"
                   				visibleRowCount="15"
                           sort="sortProductId"
                   				ariaLabelledBy="title">
@@ -92,7 +91,7 @@
             this.addEventListener("click", event => {
                 console.log('click');
                 let  oTable = window.globVar_UI5_Table
-                var context = oTable.getContextByIndex(this.getSelectedIndex());
+                var context = oTable.getContextByIndex(oTable.getSelectedIndex());
                 var value = context.getProperty("Name");
                 comsole.log("Name selected: " + value );
             });
@@ -302,11 +301,6 @@
                                    onBeforeRendering: function() {
                                      this.byId('oTable').setModel(this.jModel);
                                      window.globVar_UI5_Table = this.byId('oTable');
-                                   },
-
-                                   onSelectionChange: function(oEvent) {
-                                     alert(event.getSource().getSelectedItem().getBindingContext().getObject().Name);
-                                     console.log(JSON.stringify(event.getSource().getSelectedItem().getBindingContext().getObject()));
                                    },
 
                                    sortProductId: function(oEvent) {
