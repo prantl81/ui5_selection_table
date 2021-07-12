@@ -125,6 +125,15 @@
           model.refresh();
         }
 
+
+        getSelectedRow(){
+          let  oTable = window.globVar_UI5_Table
+          var context = oTable.getContextByIndex(oTable.getSelectedIndex());
+          var value = context.getProperty("Name");
+
+          returnType = context;  
+        }
+
         connectedCallback() {
             try {
                 if (window.commonApp) {
