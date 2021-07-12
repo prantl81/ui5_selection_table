@@ -274,9 +274,9 @@
 
                                            this._data = {
                                             Products : [
-                                              { Name: 'Standard CAN'  ,  ProductId : 'RB1234 ', Quantity: 1000, DeliveryDate: '2019-01-23T09:23:42.079Z' },
-                                              { Name: 'Hero CAN'      ,  ProductId : 'RB1235 ', Quantity: 2000, DeliveryDate: '2019-01-23T09:23:42.079Z' },
-                                              { Name: 'Summer Edition',  ProductId : 'RB1236 ', Quantity: 2000, DeliveryDate: '2019-01-23T09:23:42.079Z' }
+                                              { Name: 'Standard CAN'  ,  ProductId : 'RB1234 ', Quantity: 1000, DeliveryDate: '18.03.2021' },
+                                              { Name: 'Hero CAN'      ,  ProductId : 'RB1235 ', Quantity: 2000, DeliveryDate: '20.12.2020' },
+                                              // { Name: 'Summer Edition',  ProductId : 'RB1236 ', Quantity: 2000, DeliveryDate: '2019-01-23T09:23:42.079Z' }
                                             ]
 
                                            };
