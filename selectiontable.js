@@ -91,6 +91,9 @@
 
             this.addEventListener("click", event => {
                 console.log('click');
+                var context = this.getContextByIndex(this.getSelectedIndex());
+                var value = context.getProperty("Name");
+                comsole.log("Name selected: " + value );
             });
         }
 
