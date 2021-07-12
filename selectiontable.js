@@ -97,11 +97,17 @@
         }
 
         addRow(NewRow){
+          let arrayMembers = str.split('|');
 
+
+          let NewRow = {
+	           "name"         : "Ab die Post",
+	           "ProductId"    : "344254565X",
+	           "Quantity"     : "Pratchet",
+	           "DeliveryDate" : "15.8.2005"
+              }
           let  table = window.globVar_UI5_Table;
-          let model = table.getModel();
-          let dataArray = model.getData();
-          dataArray.Products.push(NewRow);
+          table.getModel().getData().Products.push(arrayMembers);
           model.refresh();
         }
 
