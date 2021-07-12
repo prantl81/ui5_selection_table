@@ -61,7 +61,7 @@
                   							<m:DatePicker value="{
                   								path: 'DeliveryDate',
                   								type: 'sap.ui.model.type.Date',
-                  								formatOptions: ({pattern: "yy-MM-dd"});
+                  							  formatOptions: { pattern: 'dd/mm/yyyy' } }
                   							}"/>
                   						</template>
                   					</Column>
