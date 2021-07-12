@@ -21,7 +21,7 @@
                   height="100%">
 	                 <m:Page
                 		showHeader="true"
-                		enableScrolling="true"
+                		enableScrolling="false"
                 		class="sapUiContentPadding">
 		                  <m:content>
                   			<Table
