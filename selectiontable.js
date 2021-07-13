@@ -149,9 +149,8 @@
 
           /*let selContext = oTable.getSelectedContexts();
 
-          let oModel = oTable.getModel();
-          let data = oModel.getData(); */
-
+          let oModel = oTable.getModel(); */
+          let data = oModel.getData();
           let selLine = data.Products[selIndex];
 
           let returnValue = "";
