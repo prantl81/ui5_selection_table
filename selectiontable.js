@@ -449,7 +449,7 @@
                                    handleOpenVersionPress: function(oEvent) {
                                    			MessageToast.show("Details for product with id");
                                         let buttonContext = oEvent.getSource().getBindingContext().getObject();
-                                        that.dispatchEvent(new Event("VersionOpenPressed", { detail: { buttonContext } } ));
+                                        that.dispatchEvent(new CustomEvent("VersionOpenPressed", { detail: { buttonContext } } ));
                                    }
 
 
