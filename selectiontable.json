@@ -24,9 +24,9 @@
       "description": "For internal use",
       "default": ""
     },
-    "password": {
+    "rowDetails": {
       "type": "string",
-      "description": "password",
+      "description": "row details",
       "default": ""
     }
   },
@@ -48,6 +48,11 @@
 		"getSelectedRow": {
 			"description" : "Add a new row to the table",
 			 "returnType" : "string"
+		},
+		"getRowfromProperty": {
+			"returnType": "string",
+			"description": "Returns the property rowDetails.",
+			"body": "return this.rowDetails;"
 		}
   },
   "events": {
