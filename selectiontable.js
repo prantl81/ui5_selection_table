@@ -407,11 +407,11 @@
                                                settings: this.settings
                                            }
                                        }));
-                                   }
+                                   },
 
                                    handleOpenVersionPress: function(oEvent) {
                                    			MessageToast.show("Details for product with id");
-                                   		}
+                                   }
 
 
                                });
