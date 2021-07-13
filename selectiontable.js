@@ -29,6 +29,7 @@
                           id="oTable"
                   				rows="{/Products}"
                   				selectionMode="Single"
+                          selectionChange="selectionChangeHandler"
                   				visibleRowCount="15"
                           sort="sortProductId"
                   				ariaLabelledBy="title">
@@ -104,6 +105,7 @@
                 var context = oTable.getContextByIndex(oTable.getSelectedIndex());
                 var value = context.getProperty("Name");
 
+/*
                 this.dispatchEvent(new Event("onSelectionChange", {
                     detail: {
                         properties: {
@@ -111,10 +113,19 @@
                         }
                     }
                 }));
-
+*/
 
 
             });
+
+            this.addEventListener("selectionChangeHandler", event => {
+                console.log('selectionChangeHandler');
+              /*  let  oTable = window.globVar_UI5_Table
+                var context = oTable.getContextByIndex(oTable.getSelectedIndex());
+                var value = context.getProperty("Name"); */
+            });
+
+
         }
 
         addRow(NewRow){
