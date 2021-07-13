@@ -150,7 +150,7 @@
           var sPath = oContext.getPath();
 
           var value = oContext.getProperty("ProductId");
-          var test = oContext.getProperty();
+          var test = oContext.getProperty("/");
 
           var selIndex = oTable.getSelectedIndex();
 
@@ -162,7 +162,7 @@
 
           let returnValue = "";
           //Loop Over Object to get only values into
-          for (const [key, value] of Object.entries(selLine)) {
+          for (const [key, value] of Object.entries(test)) {
             returnValue = returnValue + "|" + value;
           }
 
