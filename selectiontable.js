@@ -152,7 +152,6 @@
           var value = context.getProperty("ProductId");
           var test = context.getProperty();
 
-          let  oTable = window.globVar_UI5_Table
           var selIndex = oTable.getSelectedIndex();
 
           //let selContext = oTable.getSelectedContexts();
