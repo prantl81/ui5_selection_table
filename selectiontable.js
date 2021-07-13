@@ -144,6 +144,8 @@
 
 
         deleteRow(RowToDelete){
+          //delete via string coming from outside
+          /*
           let arrayMembers = RowToDelete.split('|');
 
           let assosciated_array = {
@@ -152,13 +154,21 @@
             Quantity  : arrayMembers[2],
             DeliveryDate : arrayMembers[3]
           }
+          */
 
-          let  oTable = window.globVar_UI5_Table;
+          //alternativly -> get selected row
+          let  oTable = window.globVar_UI5_Table
+          var oContext = oTable.getContextByIndex(oTable.getSelectedIndex());
+          var sPath = oContext.getPath();
+          var oSelRow = oContext.getProperty(sPath);
+
+
           let oModel = oTable.getModel();
           let oData = oModel.getData();
 
+          //Delete record from table
         	for(var i=0; i<oData.TableData.length; i++){
-        			if(oData.TableData[i] == assosciated_array ){
+        			if(oData.TableData[i] == oSelRow ){
         						oData.TableData.splice(i,1); //removing 1 record from i th index.
         						oModel.refresh();
         						break;//quit the loop
