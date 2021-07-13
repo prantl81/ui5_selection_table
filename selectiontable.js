@@ -27,7 +27,7 @@
 		                  <m:content>
                   			<Table
                           id="oTable"
-                  				rows="{/Products}"
+                  				rows="{/TableData}"
                   				selectionMode="Single"
                           selectionBehavior="RowOnly"
                         	visibleRowCount="15"
@@ -35,7 +35,7 @@
                   				ariaLabelledBy="title">
                   				<extension>
                   					<m:OverflowToolbar style="Clear">
-                  						<m:Title id="title" text="Products"/>
+                  						<m:Title id="title" text="Table Data"/>
                   					</m:OverflowToolbar>
                   				</extension>
                   				<columns>
@@ -138,7 +138,7 @@
           let  table = window.globVar_UI5_Table;
           let model = table.getModel();
           let data = model.getData();
-          data.Products.push(assosciated_array);
+          data.TableData.push(assosciated_array);
           model.refresh();
         }
 
@@ -329,7 +329,7 @@
                                      } else {
 
                                            var oData = {
-                                                    Products : [
+                                                    TableData : [
                                                       { Name: 'Standard CAN'  ,  ProductId : 'RB1234 ', Quantity: 1000, DeliveryDate: '18.03.2021' },
                                                       { Name: 'Hero CAN'      ,  ProductId : 'RB1235 ', Quantity: 2000, DeliveryDate: '20.12.2020' },
                                                       { Name: 'Summer Edition',  ProductId : 'RB1236 ', Quantity: 2000, DeliveryDate: '21.03.2020' }
