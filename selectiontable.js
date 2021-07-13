@@ -136,7 +136,7 @@
 
 
         getSelectedRow(){
-          let  oTable = window.globVar_UI5_Table
+        /*  let  oTable = window.globVar_UI5_Table
           var selIndex = oTable.getSelectedIndex();
 
           let selContext = oTable.getSelectedContexts();
@@ -145,7 +145,7 @@
           let data = oModel.getData();
 
           let selLine = data.Products[selIndex];
-
+          */
           let returnValue = "";
           //Loop Over Object to get only values into
           for (const [key, value] of Object.entries(selLine)) {
