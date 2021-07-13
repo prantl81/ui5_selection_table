@@ -113,6 +113,11 @@
                 let  oTable = window.globVar_UI5_Table
                 var context = oTable.getContextByIndex(oTable.getSelectedIndex());
                 var value = context.getProperty("ProductId");
+
+                this.dispatchEvent(new Event("onSelectionChange", {   }));
+
+
+
             });
 
         }
