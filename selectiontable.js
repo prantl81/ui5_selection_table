@@ -62,6 +62,15 @@
                   						 	<m:Label text="{DeliveryDate}" />
                   						</template>
                   					</Column>
+                            <Column width="7rem">
+						                 <m:Label text="SPL" />
+						                   <template>
+							                    <m:CheckBox selected="{
+								                               path: 'Heavy',
+								                               type: 'sap.ui.model.type.String'
+                  							  }"/>
+                  						</template>
+                  				 </Column>
                   				</columns>
                   			</Table>
 		                  </m:content>
