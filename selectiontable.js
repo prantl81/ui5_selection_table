@@ -158,7 +158,7 @@
           let oData = oModel.getData();
 
         	for(var i=0; i<oData.TableData.length; i++){
-        			if(oData.TableData[i] == assosciated_array ){			
+        			if(oData.TableData[i] == assosciated_array ){
         						oData.TableData.splice(i,1); //removing 1 record from i th index.
         						oModel.refresh();
         						break;//quit the loop
@@ -176,8 +176,15 @@
 
           let returnValue = "";
           //Loop Over Object to get only values into
+          let index = 0;
           for (const [key, value] of Object.entries(oSelRow)) {
-            returnValue = returnValue + "|" + value;
+            //we start not with a | , format: <field1>|<field2>|<field3>
+            if ( index === 0 ){
+              returnValue = value;
+            } else {
+              returnValue = returnValue + "|" + value;
+            }
+            index = index + 1;
           }
 
           return returnValue;
