@@ -134,7 +134,7 @@
             */
 
             this.addEventListener("VersionOpenPressed", event => {
-            let detail = event.detail;
+            let detail = event.detail.buttonContext;
             let returnValue = "";
 
             //Loop Over Object to get only values into
