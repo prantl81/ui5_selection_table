@@ -419,6 +419,8 @@
 
                                    handleOpenVersionPress: function(oEvent) {
                                    			MessageToast.show("Details for product with id");
+                                        console.log(oEvent.getParameters("rowBindingContext"));
+		                                    var oRow = oEvent.getParameter("rowBindingContext");
                                         that.dispatchEvent(new Event("VersionOpenPressed"));
                                    }
 
