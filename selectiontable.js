@@ -114,10 +114,13 @@
                 var context = oTable.getContextByIndex(oTable.getSelectedIndex());
                 var value = context.getProperty("ProductId");
 
-                this.dispatchEvent(new Event("onSelectionChange", {   }));
-
-
-
+                this.dispatchEvent(new Event("onSelectionChange", {
+                      detail: {
+                            properties: {
+                              password: value
+                            }
+                      }
+                }));
             });
 
         }
