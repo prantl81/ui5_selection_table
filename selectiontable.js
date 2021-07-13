@@ -29,8 +29,8 @@
                           id="oTable"
                   				rows="{/Products}"
                   				selectionMode="Single"
-                          selectionChange="selectionChangeHandler"
-                  				visibleRowCount="15"
+                          selectionBehaviour="RowOnly"
+                        	visibleRowCount="15"
                           sort="sortProductId"
                   				ariaLabelledBy="title">
                   				<extension>
@@ -72,6 +72,15 @@
                   							  }"/>
                   						</template>
                   				 </Column>
+                           <Column width="7rem">
+                            <m:Label text="SPL" />
+                              <template>
+                                 <m:CheckBox selected="{
+                                              path: 'Heavy',
+                                              type: 'sap.ui.model.type.String'
+                                 }"/>
+                             </template>
+                          </Column>
                   				</columns>
                   			</Table>
 		                  </m:content>
@@ -103,28 +112,8 @@
                 console.log('click');
                 let  oTable = window.globVar_UI5_Table
                 var context = oTable.getContextByIndex(oTable.getSelectedIndex());
-                var value = context.getProperty("Name");
-
-/*
-                this.dispatchEvent(new Event("onSelectionChange", {
-                    detail: {
-                        properties: {
-                            password: value
-                        }
-                    }
-                }));
-*/
-
-
+                var value = context.getProperty("ProductId");
             });
-
-            this.addEventListener("selectionChangeHandler", event => {
-                console.log('selectionChangeHandler');
-              /*  let  oTable = window.globVar_UI5_Table
-                var context = oTable.getContextByIndex(oTable.getSelectedIndex());
-                var value = context.getProperty("Name"); */
-            });
-
 
         }
 
