@@ -145,9 +145,17 @@
 
         getSelectedRow(){
           let  oTable = window.globVar_UI5_Table
+          var oContext = oTable.getContextByIndex(oTable.getSelectedIndex());
+
+          var sPath = oContext.getPath();
+
+          var value = context.getProperty("ProductId");
+          var test = context.getProperty();
+
+          let  oTable = window.globVar_UI5_Table
           var selIndex = oTable.getSelectedIndex();
 
-          //let selContext = oTable.getSelectedContexts(); 
+          //let selContext = oTable.getSelectedContexts();
 
           let oModel = oTable.getModel();
           let data = oModel.getData();
