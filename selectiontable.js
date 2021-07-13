@@ -72,15 +72,12 @@
                   							  }"/>
                   						</template>
                   				 </Column>
-                           <Column width="7rem">
-                            <m:Label text="SPL" />
-                              <template>
-                                 <m:CheckBox selected="{
-                                              path: 'Heavy',
-                                              type: 'sap.ui.model.type.String'
-                                 }"/>
-                             </template>
-                          </Column>
+                           <Column width="9rem">
+						                     <m:Label text="Open" />
+						                           <template>
+							                                <m:Button text="Open Version" press="handleOpenVersionPress"/>
+						                          </template>
+					                </Column>
                   				</columns>
                   			</Table>
 		                  </m:content>
@@ -411,6 +408,12 @@
                                            }
                                        }));
                                    }
+
+                                   handleOpenVersionPress: function(oEvent) {
+                                   			MessageToast.show("Details for product with id");
+                                   		}
+
+
                                });
                            });
 
