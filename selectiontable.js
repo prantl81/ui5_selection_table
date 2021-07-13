@@ -102,7 +102,7 @@
             _shadowRoot.querySelector("#oView").id = _id + "_oView";
 
             this._export_settings = {};
-            this._export_settings.password = "";
+            this._export_settings.rowDetails = "";
 
 
 
@@ -343,7 +343,7 @@
             this.dispatchEvent(new CustomEvent("propertiesChanged", {
                 detail: {
                     properties: {
-                        rowDetails: this.password
+                        rowDetails: this.rowDetails
                     }
                 }
             }));
@@ -351,11 +351,11 @@
 
 
         // SETTINGS
-        get password() {
+        get rowDetails() {
             return this._export_settings.rowDetails;
         }
-        set password(value) {
-            value = _password;
+        set rowDetails(value) {
+            value = _rowDetails;
             this._export_settings.rowDetails = value;
         }
 
@@ -447,7 +447,7 @@
                                        that._firePropertiesChanged();
 
                                        this.settings = {};
-                                       this.settings.password = "";
+                                       this.settings.rowDetails = "";
 
                                        that.dispatchEvent(new CustomEvent("onStart", {
                                            detail: {
