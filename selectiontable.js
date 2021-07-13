@@ -135,7 +135,7 @@
 
             this.addEventListener("VersionOpenPressed",
               function() { // anonymus function
-                this.pressButtonVersion(object_button);
+                var x = 1;
               },
               false
             );
@@ -145,7 +145,7 @@
           }
 
 
-
+/*
           pressButtonVersion(object_button){
               for (const [key, value] of Object.entries(oSelRow)) {
               //we start not with a | , format: <field1>|<field2>|<field3>
@@ -156,7 +156,7 @@
                 }
                 index = index + 1;
               }
-          };
+          }; */
 
 
 
