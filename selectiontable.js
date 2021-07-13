@@ -105,12 +105,6 @@
             this._export_settings.password = "";
 
 
-            this.addEventListener("VersionOpenPressed", event => {
-                console.log('VersionOpenPressed');
-                let  oTable = window.globVar_UI5_Table
-                var context = oTable.getContextByIndex(oTable.getSelectedIndex());
-                var value = context.getProperty("ProductId");
-            });
 
 
             this.addEventListener("click", event => {
@@ -128,7 +122,42 @@
                 }));
             });
 
+
+
+            /*
+            this.addEventListener("VersionOpenPressed", event => {
+                console.log('VersionOpenPressed');
+                let  oTable = window.globVar_UI5_Table
+                var context = oTable.getContextByIndex(oTable.getSelectedIndex());
+                var value = context.getProperty("ProductId");
+            });
+            */
+
+            this.addEventListener("VersionOpenPressed",
+              function() { // anonymus function
+                pressButtonVersion(object_button);
+              },
+              false
+            );
+
+          }
+
+
+        pressButtonVersion(object_button){
+            for (const [key, value] of Object.entries(oSelRow)) {
+            //we start not with a | , format: <field1>|<field2>|<field3>
+              if ( index === 0 ){
+                returnValue = value;
+              } else {
+                returnValue = returnValue + "|" + value;
+              }
+              index = index + 1;
+            }
         }
+
+
+
+
 
         addRow(NewRow){
           let arrayMembers = NewRow.split('|');
@@ -419,8 +448,12 @@
 
                                    handleOpenVersionPress: function(oEvent) {
                                    			MessageToast.show("Details for product with id");
-                                        let object = oEvent.getSource().getBindingContext().getObject();
-                                        that.dispatchEvent(new Event("VersionOpenPressed"));
+                                        let object_button = oEvent.getSource().getBindingContext().getObject();
+                                        that.dispatchEvent(new Event("VersionOpenPressed" {
+                                            detail: {
+                                                object_button: object_button
+                                            }
+                                        }));
                                    }
 
 
