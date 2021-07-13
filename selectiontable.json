@@ -56,6 +56,9 @@
     },
 		"onSelectionChange": {
 			"description": "Selection Changed"
+		},
+		"OnVersionButtonPress": {
+			"description": "Version Button pressed"
 		}
   }
 }

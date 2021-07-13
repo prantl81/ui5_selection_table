@@ -116,7 +116,7 @@
                 this.dispatchEvent(new Event("onSelectionChange", {
                       detail: {
                             properties: {
-                              password: value
+                              rowDetails: value
                             }
                       }
                 }));
@@ -135,26 +135,36 @@
 
             this.addEventListener("VersionOpenPressed", event => {
             let detail = event.detail;
+            let returnValue = "";
+
+            //Loop Over Object to get only values into
+            let index = 0;
+            for (const [key, value] of Object.entries(detail)) {
+              //we start not with a | , format: <field1>|<field2>|<field3>
+              if ( index === 0 ){
+                returnValue = value;
+              } else {
+                returnValue = returnValue + "|" + value;
+              }
+              index = index + 1;
+            }
+
+            this.dispatchEvent(new Event("OnVersionButtonPress", {
+                  detail: {
+                        properties: {
+                          rowDetails: returnValue
+                        }
+                  }
+            }));
 
             });
 
 
 
-          }
+          } //constructor
 
 
-/*
-          pressButtonVersion(object_button){
-              for (const [key, value] of Object.entries(oSelRow)) {
-              //we start not with a | , format: <field1>|<field2>|<field3>
-                if ( index === 0 ){
-                  returnValue = value;
-                } else {
-                  returnValue = returnValue + "|" + value;
-                }
-                index = index + 1;
-              }
-          }; */
+
 
 
 
@@ -329,11 +339,11 @@
         }
 
         _firePropertiesChanged() {
-            this.password = "";
+            this.rowDetails = "";
             this.dispatchEvent(new CustomEvent("propertiesChanged", {
                 detail: {
                     properties: {
-                        password: this.password
+                        rowDetails: this.password
                     }
                 }
             }));
@@ -342,11 +352,11 @@
 
         // SETTINGS
         get password() {
-            return this._export_settings.password;
+            return this._export_settings.rowDetails;
         }
         set password(value) {
             value = _password;
-            this._export_settings.password = value;
+            this._export_settings.rowDetails = value;
         }
 
         static get observedAttributes() {
