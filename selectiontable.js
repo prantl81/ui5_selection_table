@@ -150,7 +150,7 @@
           var sPath = oContext.getPath();
 
           var value = oContext.getProperty("ProductId");
-          var test = oContext.getProperty("/");
+          var test = oContext.getProperty(sPath);
 
           var selIndex = oTable.getSelectedIndex();
 
