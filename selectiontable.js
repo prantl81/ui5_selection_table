@@ -419,13 +419,7 @@
 
                                    handleOpenVersionPress: function(oEvent) {
                                    			MessageToast.show("Details for product with id");
-                                        that.dispatchEvent(new Event("VersionOpenPressed", {
-                                            detail: {
-                                              properties: {
-                                                password: value
-                                              }
-                                            }
-                                          }));
+                                        that.dispatchEvent(new Event("VersionOpenPressed"));
                                    }
 
 
