@@ -29,7 +29,7 @@
                           id="oTable"
                   				rows="{/Products}"
                   				selectionMode="Single"
-                          selectionBehaviour="RowOnly"
+                          selectionBehavior="RowOnly"
                         	visibleRowCount="15"
                           sort="sortProductId"
                   				ariaLabelledBy="title">
