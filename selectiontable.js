@@ -345,7 +345,7 @@
                                    },
 
                                    onBeforeRendering: function() {
-                                     this.byId('oTable').setModel(this.jModel);
+                                  //   this.byId('oTable').setModel(this.jModel);
                                      window.globVar_UI5_Table = this.byId('oTable');
                                    },
 
@@ -382,7 +382,7 @@
 
 
             if (that_._designMode) {
-                oView.byId("passwordInput").setEnabled(false);
+                //oView.byId("passwordInput").setEnabled(false);
             }
         });
     }
