@@ -38,9 +38,16 @@
 					"type": "string",
 					"description": "String separated by |"}]
 		},
+		"deleteRow": {
+			"description": "Delete a row from the table",
+			"parameters":
+			[{ "name" : "RowToDelete",
+					"type": "string",
+					"description": "String separated by |"}]
+		},
 		"getSelectedRow": {
 			"description" : "Add a new row to the table",
-			 "returnType" : "string" 
+			 "returnType" : "string"
 		}
   },
   "events": {

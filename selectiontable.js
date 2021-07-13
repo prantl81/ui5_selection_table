@@ -135,12 +135,36 @@
             DeliveryDate : arrayMembers[3]
           }
 
-          let  table = window.globVar_UI5_Table;
-          let model = table.getModel();
-          let data = model.getData();
-          data.TableData.push(assosciated_array);
-          model.refresh();
+          let  oTable = window.globVar_UI5_Table;
+          let oModel = oTable.getModel();
+          let oData = oModel.getData();
+          oData.TableData.push(assosciated_array);
+          oModel.refresh();
         }
+
+
+        deleteRow(RowToDelete){
+          let arrayMembers = RowToDelete.split('|');
+
+          let assosciated_array = {
+            Name : arrayMembers[0],
+            ProductId : arrayMembers[1],
+            Quantity  : arrayMembers[2],
+            DeliveryDate : arrayMembers[3]
+          }
+
+          let  oTable = window.globVar_UI5_Table;
+          let oModel = oTable.getModel();
+          let oData = oModel.getData();
+
+        	for(var i=0; i<oData.TableData.length; i++){
+        			if(oData.TableData[i] == assosciated_array ){			
+        						oData.TableData.splice(i,1); //removing 1 record from i th index.
+        						oModel.refresh();
+        						break;//quit the loop
+        			}
+        	}
+	      }
 
 
         getSelectedRow(){
