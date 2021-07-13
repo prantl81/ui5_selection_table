@@ -148,21 +148,11 @@
           var oContext = oTable.getContextByIndex(oTable.getSelectedIndex());
 
           var sPath = oContext.getPath();
-
-          var value = oContext.getProperty("ProductId");
-          var test = oContext.getProperty(sPath);
-
-          var selIndex = oTable.getSelectedIndex();
-
-          //let selContext = oTable.getSelectedContexts();
-
-          let oModel = oTable.getModel();
-          let data = oModel.getData();
-          let selLine = data.Products[selIndex];
+          var oSelRow = oContext.getProperty(sPath);
 
           let returnValue = "";
           //Loop Over Object to get only values into
-          for (const [key, value] of Object.entries(test)) {
+          for (const [key, value] of Object.entries(oSelRow)) {
             returnValue = returnValue + "|" + value;
           }
 
