@@ -133,12 +133,10 @@
             });
             */
 
-            this.addEventListener("VersionOpenPressed",
-              function() { // anonymus function
-                var x = 1;
-              },
-              false
-            );
+            this.addEventListener("VersionOpenPressed", event => {
+            let detail = event.detail;
+
+            });
 
 
 
@@ -451,11 +449,7 @@
                                    handleOpenVersionPress: function(oEvent) {
                                    			MessageToast.show("Details for product with id");
                                         let buttonContext = oEvent.getSource().getBindingContext().getObject();
-                                        that.dispatchEvent(new Event("VersionOpenPressed", {
-                                            detail: {
-                                                object_button: buttonContext
-                                            }
-                                        }));
+                                        that.dispatchEvent(new Event("VersionOpenPressed", { detail: { buttonContext } } ));
                                    }
 
 
