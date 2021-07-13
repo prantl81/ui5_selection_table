@@ -140,20 +140,22 @@
               false
             );
 
+            pressButtonVersion(object_button){
+                for (const [key, value] of Object.entries(oSelRow)) {
+                //we start not with a | , format: <field1>|<field2>|<field3>
+                  if ( index === 0 ){
+                    returnValue = value;
+                  } else {
+                    returnValue = returnValue + "|" + value;
+                  }
+                  index = index + 1;
+                }
+            };
+
           }
 
 
-        pressButtonVersion(object_button){
-            for (const [key, value] of Object.entries(oSelRow)) {
-            //we start not with a | , format: <field1>|<field2>|<field3>
-              if ( index === 0 ){
-                returnValue = value;
-              } else {
-                returnValue = returnValue + "|" + value;
-              }
-              index = index + 1;
-            }
-        }
+
 
 
 
@@ -448,10 +450,10 @@
 
                                    handleOpenVersionPress: function(oEvent) {
                                    			MessageToast.show("Details for product with id");
-                                        let object_button = oEvent.getSource().getBindingContext().getObject();
+                                        let buttonContext = oEvent.getSource().getBindingContext().getObject();
                                         that.dispatchEvent(new Event("VersionOpenPressed", {
                                             detail: {
-                                                object_button: object_button
+                                                object_button: buttonContext
                                             }
                                         }));
                                    }
