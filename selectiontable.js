@@ -105,6 +105,14 @@
             this._export_settings.password = "";
 
 
+            this.addEventListener("VersionOpenPressed", event => {
+                console.log('VersionOpenPressed');
+                let  oTable = window.globVar_UI5_Table
+                var context = oTable.getContextByIndex(oTable.getSelectedIndex());
+                var value = context.getProperty("ProductId");
+            });
+
+
             this.addEventListener("click", event => {
                 console.log('click');
                 let  oTable = window.globVar_UI5_Table
@@ -411,7 +419,7 @@
 
                                    handleOpenVersionPress: function(oEvent) {
                                    			MessageToast.show("Details for product with id");
-                                        that.dispatchEvent(new Event("onSelectionChange", {
+                                        that.dispatchEvent(new Event("VersionOpenPressed", {
                                             detail: {
                                               properties: {
                                                 password: value
