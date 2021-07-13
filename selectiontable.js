@@ -411,7 +411,7 @@
 
                                    handleOpenVersionPress: function(oEvent) {
                                    			MessageToast.show("Details for product with id");
-                                        this.dispatchEvent(new Event("onSelectionChange", {
+                                        that.dispatchEvent(new Event("onSelectionChange", {
                                             detail: {
                                               properties: {
                                                 password: value
