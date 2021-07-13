@@ -104,10 +104,6 @@
                 var context = oTable.getContextByIndex(oTable.getSelectedIndex());
                 var value = context.getProperty("Name");
 
-                path = event.getSource().getBindingContext().getPath();
-                let oModel = oTable.getModel();
-                var obj = oModel.getProperty(path);
-
                 this.dispatchEvent(new Event("onSelectionChange", {
                     detail: {
                         properties: {
