@@ -51,8 +51,8 @@
 		},
 		"getRowfromProperty": {
 			"returnType": "string",
-			"description": "Returns the property rowDetails.",
-			"body": "return this.rowDetails;"
+			"description": "Returns the property rowDetails",
+			"body": "return this.rowDetails"
 		}
   },
   "events": {
