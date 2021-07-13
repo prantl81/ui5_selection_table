@@ -328,17 +328,18 @@
                                          that._firstConnection = 1;
                                      } else {
 
-                                           this._data = {
-                                            Products : [
-                                              { Name: 'Standard CAN'  ,  ProductId : 'RB1234 ', Quantity: 1000, DeliveryDate: '18.03.2021' },
-                                              { Name: 'Hero CAN'      ,  ProductId : 'RB1235 ', Quantity: 2000, DeliveryDate: '20.12.2020' },
-                                              { Name: 'Summer Edition',  ProductId : 'RB1236 ', Quantity: 2000, DeliveryDate: '21.03.2020' }
-                                            ]
-
+                                           var oData = {
+                                                    Products : [
+                                                      { Name: 'Standard CAN'  ,  ProductId : 'RB1234 ', Quantity: 1000, DeliveryDate: '18.03.2021' },
+                                                      { Name: 'Hero CAN'      ,  ProductId : 'RB1235 ', Quantity: 2000, DeliveryDate: '20.12.2020' },
+                                                      { Name: 'Summer Edition',  ProductId : 'RB1236 ', Quantity: 2000, DeliveryDate: '21.03.2020' }
+                                                    ]
                                            };
+                                           var oModel = new JSONModel(oData);
+                                           this.getView().setModel(oModel);
 
-                                           this.jModel = new sap.ui.model.json.JSONModel();
-                                           this.jModel.setData(this._data);
+                                           //this.jModel = new sap.ui.model.json.JSONModel();
+                                           //this.jModel.setData(this._data);
                                       }
 
                                    },
