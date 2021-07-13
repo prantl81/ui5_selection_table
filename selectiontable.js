@@ -139,6 +139,8 @@
           let  oTable = window.globVar_UI5_Table
           var selIndex = oTable.getSelectedIndex();
 
+          let selContext = oTable.getSelectedContexts();
+
           let oModel = oTable.getModel();
           let data = oModel.getData();
 
