@@ -352,37 +352,9 @@
         }
 
 
-
           // ---------------   other methods of the widget --------------------------------
 
-    /*
-        _firePropertiesChanged() {
-            this.rowDetails = "";
-            this.dispatchEvent(new CustomEvent("propertiesChanged", {
-                detail: {
-                    properties: {
-                        rowDetails: this.rowDetails
-                    }
-                }
-            }));
-        }
 
-
-
-
-        static get observedAttributes() {
-            return [
-                "password"
-            ];
-        }
-
-        attributeChangedCallback(name, oldValue, newValue) {
-            if (oldValue != newValue) {
-                this[name] = newValue;
-            }
-        }
-
-        */
 
     }
 
