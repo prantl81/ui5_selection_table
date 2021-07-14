@@ -52,14 +52,17 @@
 			                     <m:CheckBox selected="{ path: 'Heavy', type: 'sap.ui.model.type.String' }" />
 			                  </template>
 			               </Column>
-			               <Column width="9rem">
-			                  <m:Label text="Version" />
-			                  <template>
-			                     <m:Button text="Open Version" press="handleOpenVersionPress" ariaDescribedBy="defaultButtonDescription genericButtonDescription"/>
-                           <m:Button text="Open Version" press="handleOpenVersionPress" ariaDescribedBy="rejectButtonDescription genericButtonDescription"/>
-			                  </template>
-			               </Column>
-			            </columns>
+                  </columns>
+                  <ColumnListItem>
+                    <Text text="Open" />
+                    <Text text="Delete" />
+                      <cells>
+                        <HBox>
+				                     <m:Button text="Open Version" press="handleOpenVersionPress" ariaDescribedBy="defaultButtonDescription genericButtonDescription"/>
+                             <m:Button text="Delete Version" press="handleOpenVersionPress" ariaDescribedBy="rejectButtonDescription genericButtonDescription"/>
+                      </HBox>
+                    </cells>
+                   </ColumnListItem>
 			         </Table>
 			      </m:content>
 			   </m:Page>
