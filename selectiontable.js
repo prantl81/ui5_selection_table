@@ -46,19 +46,19 @@
 			                     <m:Label text="{DeliveryDate}" />
 			                  </template>
 			               </Column>
-			               <Column width="3rem">
+			               <Column width="4rem" hAlign="Center">
 			                  <m:Label text="SPL" />
 			                  <template>
 			                     <m:CheckBox selected="{ path: 'Heavy', type: 'sap.ui.model.type.String' }" />
 			                  </template>
 			               </Column>
-			               <Column width="8rem" showSortMenuEntry="false">
+			               <Column width="8rem" showSortMenuEntry="false" hAlign="Center">
 			                  <m:Label text="Open" />
 			                  <template>
 			                     <m:Button type="Default" text="Open Version" press="handleOpenVersionPress" />
 			                  </template>
 			               </Column>
-                     <Column width="8rem" showSortMenuEntry="false">
+                     <Column width="8rem" showSortMenuEntry="false" hAlign="Center">
                         <m:Label text="Delete" />
                         <template>
                            <m:Button type="Reject" text="Delete Version" press="handleOpenVersionPress"/>
