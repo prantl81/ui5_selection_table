@@ -441,11 +441,13 @@
              ], function(Log, Controller, Sorter, JSONModel, MessageToast, DateFormat, ToolbarSpacer, library, jQuery) {
                 "use strict";
 
+                var myControler = new Controller();
+
                 // shortcut for sap.ui.table.SortOrder
 	              var SortOrder = library.SortOrder;
 
 
-                return Controller.extend("myView.Template", {
+                return myControler.extend("myView.Template", {
                                    onInit: function() {
 
                                      if (that._firstConnection === 0) {
