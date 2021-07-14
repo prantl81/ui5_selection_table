@@ -12,79 +12,61 @@
          <slot name="content"></slot>
         </div>
         <script id="oView" name="oView" type="sapui5/xmlview">
-            <mvc:View
-			         controllerName="myView.Template"
-					        xmlns="sap.ui.table"
-                	xmlns:mvc="sap.ui.core.mvc"
-                	xmlns:u="sap.ui.unified"
-                	xmlns:c="sap.ui.core"
-                	xmlns:m="sap.m"
-                  height="100%">
-	                 <m:Page
-                		showHeader="false"
-                		enableScrolling="false"
-                		class="sapUiContentPadding">
-		                  <m:content>
-                  			<Table
-                          id="oTable"
-                  				rows="{/TableData}"
-                  				selectionMode="Single"
-                          selectionBehavior="RowOnly"
-                        	visibleRowCount="15"
-                          sort="sortProductId"
-                  				ariaLabelledBy="title">
-                  				<extension>
-                  					<m:OverflowToolbar style="Clear">
-                  						<m:Title id="title" text="Table Data"/>
-                  					</m:OverflowToolbar>
-                  				</extension>
-                  				<columns>
-                  					<Column width="11rem" sortProperty="Name" filterProperty="Name">
-                  						<m:Label text="Product Name" />
-                  						<template>
-                  							<m:Text text="{Name}" wrapping="false" />
-                  						</template>
-                  					</Column>
-                  					<Column width="11rem" sortProperty="ProductId">
-                  						<m:Label text="Product Id" />
-                  						<template>
-                  							<m:Label text="{ProductId}"/>
-                  						</template>
-                  					</Column>
-                  					<Column width="6rem" sortProperty="Quantity" hAlign="End">
-                  						<m:Label text="Quantity" />
-                  						<template>
-                  							<m:Label text="{Quantity}" />
-                  						</template>
-                  					</Column>
-                  					<Column width="11rem" hAlign="Center">
-                  						<m:Label text="Delivery Date" />
-                  						<template>
-                  						 	<m:Label text="{DeliveryDate}" />
-                  						</template>
-                  					</Column>
-                            <Column width="7rem">
-						                 <m:Label text="SPL" />
-						                   <template>
-							                    <m:CheckBox selected="{
-								                               path: 'Heavy',
-								                               type: 'sap.ui.model.type.String'
-                  							  }"/>
-                  						</template>
-                  				 </Column>
-                           <Column width="9rem">
-						                     <m:Label text="Open" />
-						                           <template>
-							                                <m:Button text="Open Version" press="handleOpenVersionPress"/>
-						                          </template>
-					                </Column>
-                  				</columns>
-                  			</Table>
-		                  </m:content>
-                  	</m:Page>
-            </mvc:View>
+			<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.ui.table" xmlns:c="sap.ui.core" xmlns:m="sap.m" xmlns:u="sap.ui.unified" controllerName="myView.Template" height="100%">
+			   <m:Page showHeader="false" enableScrolling="false" class="sapUiContentPadding">
+			      <m:content>
+			         <Table id="oTable" rows="{/TableData}" selectionMode="Single" selectionBehavior="RowOnly" visibleRowCount="15" sort="sortProductId" ariaLabelledBy="title">
+			            <extension>
+			               <m:OverflowToolbar style="Clear">
+			                  <m:Title id="title" text="Table Data" />
+			               </m:OverflowToolbar>
+			            </extension>
+			            <columns>
+			               <Column width="11rem" sortProperty="Name" filterProperty="Name">
+			                  <m:Label text="Product Name" />
+			                  <template>
+			                     <m:Text text="{Name}" wrapping="false" />
+			                  </template>
+			               </Column>
+			               <Column width="11rem" sortProperty="ProductId">
+			                  <m:Label text="Product Id" />
+			                  <template>
+			                     <m:Label text="{ProductId}" />
+			                  </template>
+			               </Column>
+			               <Column width="6rem" sortProperty="Quantity" hAlign="End">
+			                  <m:Label text="Quantity" />
+			                  <template>
+			                     <m:Label text="{Quantity}" />
+			                  </template>
+			               </Column>
+			               <Column width="11rem" hAlign="Center">
+			                  <m:Label text="Delivery Date" />
+			                  <template>
+			                     <m:Label text="{DeliveryDate}" />
+			                  </template>
+			               </Column>
+			               <Column width="7rem">
+			                  <m:Label text="SPL" />
+			                  <template>
+			                     <m:CheckBox selected="{ path: 'Heavy', type: 'sap.ui.model.type.String' }" />
+			                  </template>
+			               </Column>
+			               <Column width="9rem">
+			                  <m:Label text="Open" />
+			                  <template>
+			                     <m:Button text="Open Version" press="handleOpenVersionPress" />
+			                  </template>
+			               </Column>
+			            </columns>
+			         </Table>
+			      </m:content>
+			   </m:Page>
+			</mvc:View>
         </script>
     `;
+
+
 
 // ------------------------------------------------------------------
     class Ui5CustTable extends HTMLElement {
@@ -121,7 +103,7 @@
                       }
                 }));
             });
-
+ 
 
 
             /*
