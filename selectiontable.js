@@ -53,9 +53,10 @@
 			                  </template>
 			               </Column>
 			               <Column width="9rem">
-			                  <m:Label text="Open" />
+			                  <m:Label text="Version" />
 			                  <template>
-			                     <m:Button text="Open Version" press="handleOpenVersionPress" />
+			                     <m:Button text="Open Version" press="handleOpenVersionPress" ariaDescribedBy="defaultButtonDescription genericButtonDescription"/>
+                           <m:Button text="Open Version" press="handleOpenVersionPress" ariaDescribedBy="rejectButtonDescription genericButtonDescription"/>
 			                  </template>
 			               </Column>
 			            </columns>
