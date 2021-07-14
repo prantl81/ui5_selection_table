@@ -55,20 +55,17 @@
 			               <Column width="8rem" showSortMenuEntry="false">
 			                  <m:Label text="Open" />
 			                  <template>
-			                     <m:Button type="Default" text="Open Version" press="handleOpenVersionPress" ariaDescribedBy="defaultButtonDescription genericButtonDescription"/>
+			                     <m:Button type="Default" text="Open Version" press="handleOpenVersionPress" />
 			                  </template>
 			               </Column>
                      <Column width="8rem" showSortMenuEntry="false">
                         <m:Label text="Delete" />
                         <template>
-                           <m:Button type="Reject" text="Delete Version" press="handleOpenVersionPress" ariaDescribedBy="rejectButtonDescription genericButtonDescription"/>
+                           <m:Button type="Reject" text="Delete Version" press="handleOpenVersionPress"/>
                         </template>
                      </Column>
                   </columns>
 			         </Table>
-
-                  <c: InvisibleText id="defaultButtonDescription" text="Description of default button goes here."/>
-			          	<c: InvisibleText id="rejectButtonDescription" text="Description of reject button goes here."/>
 
 			      </m:content>
 			   </m:Page>
