@@ -428,7 +428,7 @@
             "use strict";
 
             //### Controller ###
-            sap.ui.define([
+            sap.ui.require([
                 "sap/base/Log",
             		"sap/ui/core/mvc/Controller",
                 "sap/ui/model/Sorter",
@@ -447,7 +447,8 @@
 	              var SortOrder = library.SortOrder;
 
 
-                return Controller.extend("myView.Template", {
+                //return Controller.extend("myView.Template", {
+                return sap.ui.core.mvc.Controller.extend("myView.Template", {
                                    onInit: function() {
 
                                      if (that._firstConnection === 0) {
