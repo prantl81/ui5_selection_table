@@ -198,7 +198,7 @@
           // executed after the properties of the custom widget have been updated.
           onCustomWidgetAfterUpdate(changedProperties) {
 
-                var that_ = that;
+                var that_ = this;
 
                 let content = document.createElement('div');
                 content.slot = "content";
