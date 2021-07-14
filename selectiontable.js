@@ -28,13 +28,13 @@
 			                     <m:Text text="{Name}" wrapping="false" />
 			                  </template>
 			               </Column>
-			               <Column width="11rem" sortProperty="ProductId">
+			               <Column width="7rem" sortProperty="ProductId">
 			                  <m:Label text="Product Id" />
 			                  <template>
 			                     <m:Label text="{ProductId}" />
 			                  </template>
 			               </Column>
-			               <Column width="6rem" sortProperty="Quantity" hAlign="End">
+			               <Column width="5rem" sortProperty="Quantity" hAlign="End">
 			                  <m:Label text="Quantity" />
 			                  <template>
 			                     <m:Label text="{Quantity}" />
@@ -46,26 +46,30 @@
 			                     <m:Label text="{DeliveryDate}" />
 			                  </template>
 			               </Column>
-			               <Column width="7rem">
+			               <Column width="3rem">
 			                  <m:Label text="SPL" />
 			                  <template>
 			                     <m:CheckBox selected="{ path: 'Heavy', type: 'sap.ui.model.type.String' }" />
 			                  </template>
 			               </Column>
-			               <Column width="10rem" showSortMenuEntry="false">
+			               <Column width="8rem" showSortMenuEntry="false">
 			                  <m:Label text="Open" />
 			                  <template>
-			                     <m:Button text="Open Version" press="handleOpenVersionPress" ariaDescribedBy="defaultButtonDescription genericButtonDescription"/>
+			                     <m:Button type="Default" text="Open Version" press="handleOpenVersionPress" ariaDescribedBy="defaultButtonDescription genericButtonDescription"/>
 			                  </template>
 			               </Column>
-                     <Column width="10rem" showSortMenuEntry="false">
+                     <Column width="8rem" showSortMenuEntry="false">
                         <m:Label text="Delete" />
                         <template>
-                           <m:Button text="Delete Version" press="handleOpenVersionPress" ariaDescribedBy="rejectButtonDescription genericButtonDescription"/>
+                           <m:Button type="Reject" text="Delete Version" press="handleOpenVersionPress" ariaDescribedBy="rejectButtonDescription genericButtonDescription"/>
                         </template>
                      </Column>
                   </columns>
 			         </Table>
+
+                  <core:InvisibleText id="defaultButtonDescription" text="Description of default button goes here."/>
+			          	<core:InvisibleText id="rejectButtonDescription" text="Description of reject button goes here."/>
+
 			      </m:content>
 			   </m:Page>
 			</mvc:View>
