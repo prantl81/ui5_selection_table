@@ -62,8 +62,11 @@
 		"onSelectionChange": {
 			"description": "Selection Changed"
 		},
-		"OnVersionButtonPress": {
-			"description": "Version Button pressed"
+		"OpenVersionPress": {
+			"description": "Open Version Press"
+		},
+		"DeleteVersionPress": {
+			"description": "Delete Version Press"
 		}
   }
 }

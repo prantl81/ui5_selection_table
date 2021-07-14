@@ -64,7 +64,7 @@
                               </Column>
                               <Column  showSortMenuEntry="false" hAlign="Center">
                                    <template>
-                                      <m:Button type="Reject" text="Delete Version" press="handleOpenVersionPress"/>
+                                      <m:Button type="Reject" text="Delete Version" press="handleDeleteVersionPress"/>
                                   </template>
                               </Column>
                           </columns>
@@ -111,21 +111,53 @@
              });
 
 
-            this.addEventListener("VersionOpenPressed", event => {
-                let detail = event.detail.buttonContext;
-                let returnValue = "";
+             this.addEventListener("VersionOpenPressed", event => {
+                 let detail = event.detail.buttonContext;
+                 let returnValue = "";
 
-                //Loop Over Object to get only values into
-                let index = 0;
-                for (const [key, value] of Object.entries(detail)) {
-                  //we start not with a | , format: <field1>|<field2>|<field3>
-                      if ( index === 0 ){
-                          returnValue = value;
-                      } else {
-                          returnValue = returnValue + "|" + value;
-                      }
-                      index = index + 1;
-                }
+                 //Loop Over Object to get only values into
+                 let index = 0;
+                 for (const [key, value] of Object.entries(detail)) {
+                   //we start not with a | , format: <field1>|<field2>|<field3>
+                       if ( index === 0 ){
+                           returnValue = value;
+                       } else {
+                           returnValue = returnValue + "|" + value;
+                       }
+                       index = index + 1;
+                 }
+
+             //change property rowDetails
+             this.dispatchEvent(new CustomEvent("propertiesChanged", {
+                   detail: {
+                     properties: {
+                       rowDetails: returnValue
+                     }
+                   }
+               }
+             ));
+
+             //inform the widget that the version button was pressed, in SAC we can then read the property rowDetails
+             this.dispatchEvent(new Event("OpenVersionPress", { }));
+
+
+         });
+
+        this.addEventListener("VersionDeletePressed", event => {
+                    let detail = event.detail.buttonContext;
+                    let returnValue = "";
+
+                    //Loop Over Object to get only values into
+                    let index = 0;
+                    for (const [key, value] of Object.entries(detail)) {
+                      //we start not with a | , format: <field1>|<field2>|<field3>
+                          if ( index === 0 ){
+                              returnValue = value;
+                          } else {
+                              returnValue = returnValue + "|" + value;
+                          }
+                          index = index + 1;
+                    }
 
                 //change property rowDetails
                 this.dispatchEvent(new CustomEvent("propertiesChanged", {
@@ -138,9 +170,9 @@
                 ));
 
                 //inform the widget that the version button was pressed, in SAC we can then read the property rowDetails
-                this.dispatchEvent(new Event("OnVersionButtonPress", { }));
+                this.dispatchEvent(new Event("DeleteVersionPress", { }));
 
-            });
+          });
 
             //empty properties
             this._props = {};
@@ -455,7 +487,13 @@
                                    },
 
                                    handleOpenVersionPress: function(oEvent) {
-                                   			MessageToast.show("Details for product with id");
+                                   			//MessageToast.show("Details for product with id");
+                                        let buttonContext = oEvent.getSource().getBindingContext().getObject();
+                                        that.dispatchEvent(new CustomEvent("VersionOpenPressed", { detail: { buttonContext } } ));
+                                   },
+
+                                   handleDeleteVersionPress: function(oEvent) {
+                                   			//MessageToast.show("Details for product with id");
                                         let buttonContext = oEvent.getSource().getBindingContext().getObject();
                                         that.dispatchEvent(new CustomEvent("VersionOpenPressed", { detail: { buttonContext } } ));
                                    }
