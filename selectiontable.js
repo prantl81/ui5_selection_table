@@ -19,7 +19,7 @@
             xmlns="sap.m"
             height="100%">
             <Page showHeader="false" enableScrolling="false" class="sapUiContentPadding">
-                <m:content>
+                <content>
                     <Table id="oTable" rows="{/TableData}" selectionMode="Single" selectionBehavior="RowOnly" visibleRowCount="15" sort="sortProductId" ariaLabelledBy="title">
                         <extension>
                             <OverflowToolbar style="Clear">
@@ -71,8 +71,8 @@
                             </ColumnListItem>
                         </items>
                     </Table>
-                </m:content>
-            </m:Page>
+                </content>
+            </Page>
         </mvc:View>
         </script>
     `;
