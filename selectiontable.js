@@ -428,9 +428,9 @@
             "use strict";
 
             //### Controller ###
-            sap.ui.require([
+            sap.ui.define([
                 "sap/base/Log",
-            		"sap/ui/core/mvc/Controller",
+            		"sap/ui/core/mvc/Controller",   //define as we can't require the MVC controller
                 "sap/ui/model/Sorter",
             		"sap/ui/model/json/JSONModel",
             		"sap/m/MessageToast",
@@ -444,13 +444,8 @@
                 // shortcut for sap.ui.table.SortOrder
 	              var SortOrder = library.SortOrder;
 
-                Controller.create({ name: "myView.Template" }).then(function(oController) {
-                  // Do something with oController
-                });
 
-
-                //return Controller.extend("myView.Template", {
-                 return oController.extend("myView.Template", {
+                return Controller.extend("myView.Template", {
                                    onInit: function() {
 
                                      if (that._firstConnection === 0) {
