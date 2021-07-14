@@ -52,7 +52,6 @@
 			                     <m:CheckBox selected="{ path: 'Heavy', type: 'sap.ui.model.type.String' }" />
 			                  </template>
 			               </Column>
-                     </Column>
 			               <Column width="10rem" showSortMenuEntry="false">
 			                  <m:Label text="Open" />
 			                  <template>
