@@ -531,4 +531,43 @@
             return v.toString(16);
         });
     }
+
+
+  //SHARED FUNCTION: reuse between widgets
+	//function(src, callback) {
+	let customElementScripts = window.sessionStorage.getItem("customElementScripts") || [];
+
+	let scriptStatus = customElementScripts.find(function(element) {
+		return element.src == scriptSrc;
+	});
+
+	if (scriptStatus) {
+		if(scriptStatus.status == "ready") {
+			onScriptLoaded();
+		} else {
+			scriptStatus.callbacks.push(onScriptLoaded);
+		}
+	} else {
+
+		let scriptObject = {
+			"src": scriptSrc,
+			"status": "loading",
+			"callbacks": [onScriptLoaded]
+		}
+
+		customElementScripts.push(scriptObject);
+
+		var script = document.createElement("script");
+		script.type = "text/javascript";
+		script.src = scriptSrc;
+		script.onload = function(){
+			scriptObject.status = "ready";
+			scriptObject.callbacks.forEach((callbackFn) => callbackFn.call());
+		};
+		document.head.appendChild(script);
+	}
+	//}
+	//END SHARED FUNCTION
+
+
 })();
