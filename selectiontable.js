@@ -103,17 +103,7 @@
                       }
                 }));
             });
- 
 
-
-            /*
-            this.addEventListener("VersionOpenPressed", event => {
-                console.log('VersionOpenPressed');
-                let  oTable = window.globVar_UI5_Table
-                var context = oTable.getContextByIndex(oTable.getSelectedIndex());
-                var value = context.getProperty("ProductId");
-            });
-            */
 
             this.addEventListener("VersionOpenPressed", event => {
             let detail = event.detail.buttonContext;
@@ -146,10 +136,7 @@
           } //constructor
 
 
-
-
-
-
+  // methods of the widget
 
         addRow(NewRow){
           let arrayMembers = NewRow.split('|');
@@ -226,6 +213,9 @@
           return returnValue;
         }
 
+
+        // Some other methods
+
         connectedCallback() {
             try {
                 if (window.commonApp) {
@@ -261,7 +251,7 @@
                                 components: components,
                                 vars: app.globalVars
                             });
-			//test comment
+
                             if (metadata != this.metadata) {
                                 this.metadata = metadata;
 
