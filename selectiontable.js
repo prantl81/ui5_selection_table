@@ -67,8 +67,8 @@
                   </columns>
 			         </Table>
 
-                  <m:core:InvisibleText id="defaultButtonDescription" text="Description of default button goes here."/>
-			          	<m:core:InvisibleText id="rejectButtonDescription" text="Description of reject button goes here."/>
+                  <c: InvisibleText id="defaultButtonDescription" text="Description of default button goes here."/>
+			          	<c: InvisibleText id="rejectButtonDescription" text="Description of reject button goes here."/>
 
 			      </m:content>
 			   </m:Page>
