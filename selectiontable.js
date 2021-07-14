@@ -15,46 +15,48 @@
         <mvc:View
             controllerName="myView.Template"
             xmlns:mvc="sap.ui.core.mvc"
-            xmlns:core="sap.ui.core"
-            xmlns="sap.m"
+            xmlns:c="sap.ui.core"
+            xmlns:m="sap.m"
+            xmlns:u="sap.ui.unified"
+            xmlns="sap.ui.table"
             height="100%">
-            <Page showHeader="false" enableScrolling="false" class="sapUiContentPadding">
-                <content>
+            <m:Page showHeader="false" enableScrolling="false" class="sapUiContentPadding">
+                <m:content>
                     <Table id="oTable" rows="{/TableData}" selectionMode="Single" selectionBehavior="RowOnly" visibleRowCount="15" sort="sortProductId" ariaLabelledBy="title">
                         <extension>
-                            <OverflowToolbar style="Clear">
-                                <Title id="title" text="Table Data" />
-                            </OverflowToolbar>
+                            <m:OverflowToolbar style="Clear">
+                                <Title text="Table Data" />
+                            </m:OverflowToolbar>
                         </extension>
                         <columns>
                             <Column filterProperty="Name">
-                                <Label text="Product Name" />
+                                <m:Label text="Product Name" />
                             </Column>
                             <Column sortProperty="ProductId">
-                                <Label text="Product Id" />
+                                <m:Label text="Product Id" />
                             </Column>
                             <Column sortProperty="Quantity" hAlign="End">
-                                <Label text="Quantity" />
+                                <m:Label text="Quantity" />
                             </Column>
                             <Column showSortMenuEntry="false">
-                                <Label text="Delivery Date" />
+                                <m:Label text="Delivery Date" />
                             </Column>
                             <Column hAlign="Center">
-                                <Label text="SPL" />
+                                <m:Label text="SPL" />
                             </Column>
                             <Column showSortMenuEntry="false" hAlign="Center">
-                                <Label text="Open" />
+                                <m:Label text="Open" />
                             </Column>
                             <Column showSortMenuEntry="false" hAlign="Center">
-                                <Label text="Delete" />
+                                <m:Label text="Delete" />
                             </Column>
                         </columns>
                         <items>
                             <ColumnListItem>
                                 <cells>
-                                    <ObjectIdentifier text="{Name}"/>
-                                    <Text text="{ProductId}" />
-                                    <ObjectNumber
+                                    <m:ObjectIdentifier text="{Name}"/>
+                                    <m:Text text="{ProductId}" />
+                                    <m:ObjectNumber
         						number="{Quantity}"
         						unit="SU"
         						state={
@@ -64,15 +66,15 @@
         							],
         							formatter: ''
         						} />
-                                    <Text text="{DeliveryDate}" />
-                                    <Button type="Default" text="Open Version" press="handleOpenVersionPress" />
-                                    <Button type="Reject" text="Delete Version" press="handleOpenVersionPress"/>
+                                    <m:Text text="{DeliveryDate}" />
+                                    <m:Button type="Default" text="Open Version" press="handleOpenVersionPress" />
+                                    <m:Button type="Reject" text="Delete Version" press="handleOpenVersionPress"/>
                                 </cells>
                             </ColumnListItem>
                         </items>
                     </Table>
-                </content>
-            </Page>
+                </m:content>
+            </m:Page>
         </mvc:View>
         </script>
     `;
