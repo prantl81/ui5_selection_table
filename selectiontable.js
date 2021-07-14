@@ -197,124 +197,7 @@
 
           // executed after the properties of the custom widget have been updated.
           onCustomWidgetAfterUpdate(changedProperties) {
-
-                var that  = this;
-                var that_ = this;
-
-
-                let content = document.createElement('div');
-                content.slot = "content";
-                that_.appendChild(content);
-
-                sap.ui.getCore().attachInit(function() {
-                    "use strict";
-
-                    //### Controller ###
-                    sap.ui.require([
-                        "sap/base/Log",
-                        "sap/ui/core/mvc/Controller",
-                        "sap/ui/model/Sorter",
-                        "sap/ui/model/json/JSONModel",
-                        "sap/m/MessageToast",
-                        "sap/ui/core/format/DateFormat",
-                        "sap/m/ToolbarSpacer",
-                        "sap/ui/table/library",
-                        "sap/ui/thirdparty/jquery"
-                     ], function(Log, Controller, Sorter, JSONModel, MessageToast, DateFormat, ToolbarSpacer, library, jQuery) {
-                        "use strict";
-
-                        // shortcut for sap.ui.table.SortOrder
-                        var SortOrder = library.SortOrder;
-
-
-                        return Controller.extend("myView.Template", {
-                                           onInit: function() {
-
-                                             if (that._firstConnection === 0) {
-                                                 that._firstConnection = 1;
-                                             } else {
-
-                                                   var oData = {
-                                                            TableData : [
-                                                              { Name: 'Standard CAN'  ,  ProductId : 'RB1234 ', Quantity: 1000, DeliveryDate: '18.03.2021' },
-                                                              { Name: 'Hero CAN'      ,  ProductId : 'RB1235 ', Quantity: 2000, DeliveryDate: '20.12.2020' },
-                                                              { Name: 'Summer Edition',  ProductId : 'RB1236 ', Quantity: 3000, DeliveryDate: '21.03.2020' },
-                                                              { Name: 'Winter Edition',  ProductId : 'RB1236 ', Quantity: 4000, DeliveryDate: '21.03.2020' },
-                                                              { Name: 'Organics'      ,  ProductId : 'RB1236 ', Quantity:  200, DeliveryDate: '21.03.2020' },
-                                                              { Name: 'Water'         ,  ProductId : 'RB1236 ', Quantity:  500, DeliveryDate: '21.03.2020' },
-                                                              { Name: 'Chocolate'     ,  ProductId : 'RB1236 ', Quantity:  250, DeliveryDate: '21.03.2020' }
-                                                            ]
-                                                   };
-                                                   var oModel = new JSONModel(oData);
-                                                   this.getView().setModel(oModel);
-
-                                                   //this.jModel = new sap.ui.model.json.JSONModel();
-                                                   //this.jModel.setData(this._data);
-                                              }
-
-                                           },
-
-                                           onBeforeRendering: function() {
-                                          //   this.byId('oTable').setModel(this.jModel);
-                                             window.globVar_UI5_Table = this.byId('oTable');
-                                           },
-
-                                           sortProductId: function(oEvent) {
-                                            // let oTable = window.globVar_UI5_Table;
-                                            // let oView = this.byId('myView.Template');
-                                            // let oProdIdCol = oView.byId("ProductId");
-                                            // oTable.sort(oProdIdCol, this._bSortColumnDescending ? SortOrder.Descending : SortOrder.Ascending, /*extend existing sorting*/true)
-                                            // this._bSortColumnDescending = !this._bSortColumnDescending;
-                                            console.log("sortProductId called");
-                                           },
-                                           onButtonPress: function(oEvent) {
-                                               // _password = oView.byId("passwordInput").getValue();
-                                               that._firePropertiesChanged();
-
-                                               this.settings = {};
-                                               this.settings.rowDetails = "";
-
-                                               that.dispatchEvent(new CustomEvent("onStart", {
-                                                   detail: {
-                                                       settings: this.settings
-                                                   }
-                                               }));
-                                           },
-
-                                           handleOpenVersionPress: function(oEvent) {
-                                                //MessageToast.show("Details for product with id");
-                                                let buttonContext = oEvent.getSource().getBindingContext().getObject();
-                                                that.dispatchEvent(new CustomEvent("VersionOpenPressed", { detail: { buttonContext } } ));
-                                           },
-
-                                           handleDeleteVersionPress: function(oEvent) {
-                                                //MessageToast.show("Details for product with id");
-                                                let buttonContext = oEvent.getSource().getBindingContext().getObject();
-                                                that.dispatchEvent(new CustomEvent("VersionDeletePressed", { detail: { buttonContext } } ));
-                                           }
-
-
-                                       });
-                                   });
-
-
-                    //### THE APP: place the XMLView somewhere into DOM ###
-                    var oView  = sap.ui.xmlview({
-                        viewContent: jQuery(_shadowRoot.getElementById(_id + "_oView")).html(),
-                    });
-                    oView.placeAt(content);
-
-
-                    if (that_._designMode) {
-                        //oView.byId("passwordInput").setEnabled(false);
-                    }
-                });
-
-
-
-
-
-
+              loadthis(this);
               if ("rowDetails" in changedProperties) {
                 this.rowDetails = changedProperties["rowDetails"];
               }
@@ -527,7 +410,117 @@
     customElements.define("tp-sac-selectiontable-ui5", Ui5CustTable);
 
     // ---------------- UTILS -------------------------------------------------
+    function loadthis(that) {
+        var that_ = that;
 
+        let content = document.createElement('div');
+        content.slot = "content";
+        that_.appendChild(content);
+
+        sap.ui.getCore().attachInit(function() {
+            "use strict";
+
+            //### Controller ###
+            sap.ui.define([
+                "sap/base/Log",
+            		"sap/ui/core/mvc/Controller",
+                "sap/ui/model/Sorter",
+            		"sap/ui/model/json/JSONModel",
+            		"sap/m/MessageToast",
+            		"sap/ui/core/format/DateFormat",
+                "sap/m/ToolbarSpacer",
+                "sap/ui/table/library",
+                "sap/ui/thirdparty/jquery"
+             ], function(Log, Controller, Sorter, JSONModel, MessageToast, DateFormat, ToolbarSpacer, library, jQuery) {
+                "use strict";
+
+                // shortcut for sap.ui.table.SortOrder
+	              var SortOrder = library.SortOrder;
+
+
+                return Controller.extend("myView.Template", {
+                                   onInit: function() {
+
+                                     if (that._firstConnection === 0) {
+                                         that._firstConnection = 1;
+                                     } else {
+
+                                           var oData = {
+                                                    TableData : [
+                                                      { Name: 'Standard CAN'  ,  ProductId : 'RB1234 ', Quantity: 1000, DeliveryDate: '18.03.2021' },
+                                                      { Name: 'Hero CAN'      ,  ProductId : 'RB1235 ', Quantity: 2000, DeliveryDate: '20.12.2020' },
+                                                      { Name: 'Summer Edition',  ProductId : 'RB1236 ', Quantity: 3000, DeliveryDate: '21.03.2020' },
+                                                      { Name: 'Winter Edition',  ProductId : 'RB1236 ', Quantity: 4000, DeliveryDate: '21.03.2020' },
+                                                      { Name: 'Organics'      ,  ProductId : 'RB1236 ', Quantity:  200, DeliveryDate: '21.03.2020' },
+                                                      { Name: 'Water'         ,  ProductId : 'RB1236 ', Quantity:  500, DeliveryDate: '21.03.2020' },
+                                                      { Name: 'Chocolate'     ,  ProductId : 'RB1236 ', Quantity:  250, DeliveryDate: '21.03.2020' }
+                                                    ]
+                                           };
+                                           var oModel = new JSONModel(oData);
+                                           this.getView().setModel(oModel);
+
+                                           //this.jModel = new sap.ui.model.json.JSONModel();
+                                           //this.jModel.setData(this._data);
+                                      }
+
+                                   },
+
+                                   onBeforeRendering: function() {
+                                  //   this.byId('oTable').setModel(this.jModel);
+                                     window.globVar_UI5_Table = this.byId('oTable');
+                                   },
+
+                                   sortProductId: function(oEvent) {
+                                    // let oTable = window.globVar_UI5_Table;
+                                    // let oView = this.byId('myView.Template');
+                                    // let oProdIdCol = oView.byId("ProductId");
+                                    // oTable.sort(oProdIdCol, this._bSortColumnDescending ? SortOrder.Descending : SortOrder.Ascending, /*extend existing sorting*/true)
+                                    // this._bSortColumnDescending = !this._bSortColumnDescending;
+                                    console.log("sortProductId called");
+                                   },
+                                   onButtonPress: function(oEvent) {
+                                       // _password = oView.byId("passwordInput").getValue();
+                                       that._firePropertiesChanged();
+
+                                       this.settings = {};
+                                       this.settings.rowDetails = "";
+
+                                       that.dispatchEvent(new CustomEvent("onStart", {
+                                           detail: {
+                                               settings: this.settings
+                                           }
+                                       }));
+                                   },
+
+                                   handleOpenVersionPress: function(oEvent) {
+                                   			//MessageToast.show("Details for product with id");
+                                        let buttonContext = oEvent.getSource().getBindingContext().getObject();
+                                        that.dispatchEvent(new CustomEvent("VersionOpenPressed", { detail: { buttonContext } } ));
+                                   },
+
+                                   handleDeleteVersionPress: function(oEvent) {
+                                   			//MessageToast.show("Details for product with id");
+                                        let buttonContext = oEvent.getSource().getBindingContext().getObject();
+                                        that.dispatchEvent(new CustomEvent("VersionDeletePressed", { detail: { buttonContext } } ));
+                                   }
+
+
+                               });
+                           });
+
+
+            //### THE APP: place the XMLView somewhere into DOM ###
+            var oView  = sap.ui.xmlview({
+                viewContent: jQuery(_shadowRoot.getElementById(_id + "_oView")).html(),
+            });
+            oView.placeAt(content);
+
+
+            if (that_._designMode) {
+                //oView.byId("passwordInput").setEnabled(false);
+            }
+        });
+    }
 
     // ---------------- UTILS END -----------------------------------------------
 
