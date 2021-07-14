@@ -8,7 +8,7 @@
 	"vendor": "tp",
 	"eula": "",
 	"license": "",
-	"imports": ["input-controls"],
+	"imports": [""],
 	  "webcomponents": [
     {
       "kind": "main",

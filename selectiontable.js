@@ -135,8 +135,138 @@
 
           } //constructor
 
+          // ---------------   Standard Methods --------------------------------
 
-  // methods of the widget
+          // executed Jbefore the properties of the custom widget are updated.
+          onCustomWidgetBeforeUpdate(changedProperties) {
+              if ("designMode" in changedProperties) {
+                  this._designMode = changedProperties["designMode"];
+              } else {
+              this._props = { ...this._props, ...changedProperties };
+            }
+          }
+
+
+          // executed after the properties of the custom widget have been updated.
+          onCustomWidgetAfterUpdate(changedProperties) {
+              loadthis(this);
+              if ("rowDetails" in changedProperties) {
+                this.rowDetails = changedProperties["rowDetails"];
+              }
+          }
+
+
+
+          // executed when this Web Component of the custom widget is connected to the HTML DOM of the web page.
+          connectedCallback() {
+              try {
+                  if (window.commonApp) {
+                      let outlineContainer = commonApp.getShell().findElements(true, ele => ele.hasStyleClass && ele.hasStyleClass("sapAppBuildingOutline"))[0]; // sId: "__container0"
+
+                      if (outlineContainer && outlineContainer.getReactProps) {
+                          let parseReactState = state => {
+                              let components = {};
+
+                              let globalState = state.globalState;
+                              let instances = globalState.instances;
+                              let app = instances.app["[{\"app\":\"MAIN_APPLICATION\"}]"];
+                              let names = app.names;
+
+                              for (let key in names) {
+                                  let name = names[key];
+
+                                  let obj = JSON.parse(key).pop();
+                                  let type = Object.keys(obj)[0];
+                                  let id = obj[type];
+
+                                  components[id] = {
+                                      type: type,
+                                      name: name
+                                  };
+                              }
+
+                              for (let componentId in components) {
+                                  let component = components[componentId];
+                              }
+
+                              let metadata = JSON.stringify({
+                                  components: components,
+                                  vars: app.globalVars
+                              });
+
+                              if (metadata != this.metadata) {
+                                  this.metadata = metadata;
+
+                                  this.dispatchEvent(new CustomEvent("propertiesChanged", {
+                                      detail: {
+                                          properties: {
+                                              metadata: metadata
+                                          }
+                                      }
+                                  }));
+                              }
+                          };
+
+                          let subscribeReactStore = store => {
+                              this._subscription = store.subscribe({
+                                  effect: state => {
+                                      parseReactState(state);
+                                      return {
+                                          result: 1
+                                      };
+                                  }
+                              });
+                          };
+
+                          let props = outlineContainer.getReactProps();
+                          if (props) {
+                              subscribeReactStore(props.store);
+                          } else {
+                              let oldRenderReactComponent = outlineContainer.renderReactComponent;
+                              outlineContainer.renderReactComponent = e => {
+                                  let props = outlineContainer.getReactProps();
+                                  subscribeReactStore(props.store);
+
+                                  oldRenderReactComponent.call(outlineContainer, e);
+                              }
+                          }
+                      }
+                  }
+              } catch (e) {}
+          }
+
+
+
+          // executed when this Web Component of the custom widget is disconnected from the HTML DOM of the web page.
+          disconnectedCallback() {
+              if (this._subscription) {
+                  this._subscription();
+                  this._subscription = null;
+              }
+          }
+
+
+
+          // execute JavaScript code when the custom widget is resized
+          onCustomWidgetResize(width, height) {
+          }
+
+
+
+          // ---------------   Property Setter/Getter Functions
+
+          set rowDetails(newValue) {
+              this.rowDetails = newValue;
+          }
+
+
+          get rowDetails() {
+              return this.this.rowDetails;
+          }
+
+
+
+          // ---------------   "custom" methods of the widget --------------------------------
 
         addRow(NewRow){
           let arrayMembers = NewRow.split('|');
@@ -214,101 +344,8 @@
         }
 
 
-        // Some other methods
 
-        connectedCallback() {
-            try {
-                if (window.commonApp) {
-                    let outlineContainer = commonApp.getShell().findElements(true, ele => ele.hasStyleClass && ele.hasStyleClass("sapAppBuildingOutline"))[0]; // sId: "__container0"
-
-                    if (outlineContainer && outlineContainer.getReactProps) {
-                        let parseReactState = state => {
-                            let components = {};
-
-                            let globalState = state.globalState;
-                            let instances = globalState.instances;
-                            let app = instances.app["[{\"app\":\"MAIN_APPLICATION\"}]"];
-                            let names = app.names;
-
-                            for (let key in names) {
-                                let name = names[key];
-
-                                let obj = JSON.parse(key).pop();
-                                let type = Object.keys(obj)[0];
-                                let id = obj[type];
-
-                                components[id] = {
-                                    type: type,
-                                    name: name
-                                };
-                            }
-
-                            for (let componentId in components) {
-                                let component = components[componentId];
-                            }
-
-                            let metadata = JSON.stringify({
-                                components: components,
-                                vars: app.globalVars
-                            });
-
-                            if (metadata != this.metadata) {
-                                this.metadata = metadata;
-
-                                this.dispatchEvent(new CustomEvent("propertiesChanged", {
-                                    detail: {
-                                        properties: {
-                                            metadata: metadata
-                                        }
-                                    }
-                                }));
-                            }
-                        };
-
-                        let subscribeReactStore = store => {
-                            this._subscription = store.subscribe({
-                                effect: state => {
-                                    parseReactState(state);
-                                    return {
-                                        result: 1
-                                    };
-                                }
-                            });
-                        };
-
-                        let props = outlineContainer.getReactProps();
-                        if (props) {
-                            subscribeReactStore(props.store);
-                        } else {
-                            let oldRenderReactComponent = outlineContainer.renderReactComponent;
-                            outlineContainer.renderReactComponent = e => {
-                                let props = outlineContainer.getReactProps();
-                                subscribeReactStore(props.store);
-
-                                oldRenderReactComponent.call(outlineContainer, e);
-                            }
-                        }
-                    }
-                }
-            } catch (e) {}
-        }
-
-        disconnectedCallback() {
-            if (this._subscription) {
-                this._subscription();
-                this._subscription = null;
-            }
-        }
-
-        onCustomWidgetBeforeUpdate(changedProperties) {
-            if ("designMode" in changedProperties) {
-                this._designMode = changedProperties["designMode"];
-            }
-        }
-
-        onCustomWidgetAfterUpdate(changedProperties) {
-            loadthis(this);
-        }
+          // ---------------   other methods of the widget --------------------------------
 
         _firePropertiesChanged() {
             this.rowDetails = "";
@@ -322,14 +359,7 @@
         }
 
 
-        // SETTINGS
-        get rowDetails() {
-            return this._export_settings.rowDetails;
-        }
-        set rowDetails(value) {
-            value = _rowDetails;
-            this._export_settings.rowDetails = value;
-        }
+
 
         static get observedAttributes() {
             return [
