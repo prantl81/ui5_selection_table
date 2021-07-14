@@ -421,7 +421,7 @@
             "use strict";
 
             //### Controller ###
-            sap.ui.require([
+            sap.ui.define([
                 "sap/base/Log",
             		"sap/ui/core/mvc/Controller",
                 "sap/ui/model/Sorter",
