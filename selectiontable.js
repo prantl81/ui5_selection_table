@@ -58,14 +58,12 @@
                                   </template>
                               </Column>
                               <Column  showSortMenuEntry="false" hAlign="Center">
-                                  <m:Label text="Open" />
                                   <template>
                                       <m:Button type="Default" text="Open Version" press="handleOpenVersionPress" />
                                   </template>
                               </Column>
                               <Column  showSortMenuEntry="false" hAlign="Center">
-                                  <m:Label text="Delete" />
-                                  <template>
+                                   <template>
                                       <m:Button type="Reject" text="Delete Version" press="handleOpenVersionPress"/>
                                   </template>
                               </Column>
