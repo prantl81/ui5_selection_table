@@ -428,7 +428,7 @@
             "use strict";
 
             //### Controller ###
-            sap.ui.define([
+            sap.ui.require([
                 "sap/base/Log",
             		"sap/ui/core/mvc/Controller",
                 "sap/ui/model/Sorter",
@@ -441,11 +441,21 @@
              ], function(Log, Controller, Sorter, JSONModel, MessageToast, DateFormat, ToolbarSpacer, library, jQuery) {
                 "use strict";
 
-
                 // shortcut for sap.ui.table.SortOrder
 	              var SortOrder = library.SortOrder;
 
-                return Controller.extend("myView.Template", {
+
+
+                var myController = new Controller;
+
+
+                myController.create({ name: "myView.Template" }).then(function(oController) {
+                  // Do something with oController
+                });
+
+
+                //return Controller.extend("myView.Template", {
+                 return oController.extend("myView.Template", {
                                    onInit: function() {
 
                                      if (that._firstConnection === 0) {
