@@ -92,8 +92,9 @@
             this.addEventListener("click", event => {
                  console.log('click');
                  let  oTable = window.globVar_UI5_Table
-                 if ( oTable.getSelectedIndex() !== undefined ){
-             					let context = oTable.getContextByIndex(oTable.getSelectedIndex());
+                 let oSelectionIndex =  oTable.getSelectedIndex();
+                 if ( oSelectionIndex !== anonymous ){
+             					let context = oTable.getContextByIndex(oSelectionIndex);
              					let value = context.getProperty("ProductId");
 
              					this.dispatchEvent(new Event("onSelectionChange", {
@@ -147,9 +148,8 @@
           onCustomWidgetBeforeUpdate(changedProperties) {
               if ("designMode" in changedProperties) {
                   this._designMode = changedProperties["designMode"];
-              } else {
+              } 
               this._props = { ...this._props, ...changedProperties };
-            }
           }
 
 
