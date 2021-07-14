@@ -49,16 +49,7 @@
                                 <cells>
                                     <m:ObjectIdentifier text="{Name}"/>
                                     <m:Text text="{ProductId}" />
-                                    <m:ObjectNumber
-        						number="{Quantity}"
-        						unit="SU"
-        						state={
-        							parts: [
-        								{path: 'WeightMeasure'},
-        								{path: 'WeightUnit'}
-        							],
-        							formatter: ''
-        						} />
+                                    <m:Text text="{Quantity}" />
                                     <m:Text text="{DeliveryDate}" />
                                     <m:Button type="Default" text="Open Version" press="handleOpenVersionPress" />
                                     <m:Button type="Reject" text="Delete Version" press="handleOpenVersionPress"/>
