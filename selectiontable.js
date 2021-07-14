@@ -90,19 +90,21 @@
 
 
             this.addEventListener("click", event => {
-                console.log('click');
-                let  oTable = window.globVar_UI5_Table
-                var context = oTable.getContextByIndex(oTable.getSelectedIndex());
-                var value = context.getProperty("ProductId");
+                 console.log('click');
+                 let  oTable = window.globVar_UI5_Table
+                 if ( oTable.getSelectedIndex() !== undefined ){
+             					let context = oTable.getContextByIndex(oTable.getSelectedIndex());
+             					let value = context.getProperty("ProductId");
 
-                this.dispatchEvent(new Event("onSelectionChange", {
-                      detail: {
-                            properties: {
-                              rowDetails: value
-                            }
-                      }
-                }));
-            });
+             					this.dispatchEvent(new Event("onSelectionChange", {
+             						  detail: {
+             								properties: {
+             								  rowDetails: value
+             								}
+             						  }
+             					}));
+                 }
+             });
 
 
             this.addEventListener("VersionOpenPressed", event => {
