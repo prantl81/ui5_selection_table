@@ -336,37 +336,34 @@
 
 
         deleteRow(RowToDelete){
-          //delete via string coming from outside
-          /*
-          let arrayMembers = RowToDelete.split('|');
-
-          let assosciated_array = {
-            Name : arrayMembers[0],
-            ProductId : arrayMembers[1],
-            Quantity  : arrayMembers[2],
-            DeliveryDate : arrayMembers[3]
-          }
-          */
 
           //alternativly -> get selected row
           let  oTable = window.globVar_UI5_Table
-          var oContext = oTable.getContextByIndex(oTable.getSelectedIndex());
-          var sPath = oContext.getPath();
-          var oSelRow = oContext.getProperty(sPath);
+
+          //check if a row is selected
+          let oSelectionIndex =  oTable.getSelectedIndex();
+          if ( oSelectionIndex > -1 ){
+              var oContext = oTable.getContextByIndex(oTable.getSelectedIndex());
+              var sPath = oContext.getPath();
+              var oSelRow = oContext.getProperty(sPath);
 
 
-          let oModel = oTable.getModel();
-          let oData = oModel.getData();
+              let oModel = oTable.getModel();
+              let oData = oModel.getData();
 
-          //Delete record from table
-        	for(var i=0; i<oData.TableData.length; i++){
-        			if(oData.TableData[i] == oSelRow ){
-        						oData.TableData.splice(i,1); //removing 1 record from i th index.
-        						oModel.refresh();
-        						break;//quit the loop
-        			}
-        	}
-	      }
+              //Delete record from table
+            	for(var i=0; i<oData.TableData.length; i++){
+            			if(oData.TableData[i] == oSelRow ){
+            						oData.TableData.splice(i,1); //removing 1 record from i th index.
+            						oModel.refresh();
+            						break;//quit the loop
+            			}
+            	}
+              return "Line Deleted.";
+    	      } else {
+              return "NO line selected!";        
+            }
+       }
 
 
         getSelectedRow(){
