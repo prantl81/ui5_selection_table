@@ -202,9 +202,7 @@
 
               async function LoadLibs() {
                 const response = await loadthis(that);
-                console.log(response);
               }
-
               LoadLibs();
 
               if ("rowDetails" in changedProperties) {
@@ -430,7 +428,7 @@
             "use strict";
 
             //### Controller ###
-            sap.ui.define([
+            sap.ui.require([
                 "sap/base/Log",
             		"sap/ui/core/mvc/Controller",
                 "sap/ui/model/Sorter",
