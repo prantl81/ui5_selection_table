@@ -22,43 +22,43 @@
 			               </m:OverflowToolbar>
 			            </extension>
 			            <columns>
-			               <Column width="11rem" sortProperty="Name" filterProperty="Name">
+			               <Column sortProperty="Name" filterProperty="Name">
 			                  <m:Label text="Product Name" />
 			                  <template>
 			                     <m:Text text="{Name}" wrapping="false" />
 			                  </template>
 			               </Column>
-			               <Column width="7rem" sortProperty="ProductId">
+			               <Column sortProperty="ProductId">
 			                  <m:Label text="Product Id" />
 			                  <template>
 			                     <m:Label text="{ProductId}" />
 			                  </template>
 			               </Column>
-			               <Column width="5rem" sortProperty="Quantity" hAlign="End">
+			               <Column sortProperty="Quantity" hAlign="End">
 			                  <m:Label text="Quantity" />
 			                  <template>
 			                     <m:Label text="{Quantity}" />
 			                  </template>
 			               </Column>
-			               <Column width="11rem" hAlign="Center" showSortMenuEntry="false">
+			               <Column showSortMenuEntry="false">
 			                  <m:Label text="Delivery Date" />
 			                  <template>
 			                     <m:Label text="{DeliveryDate}" />
 			                  </template>
 			               </Column>
-			               <Column width="4rem" hAlign="Center">
+			               <Column  hAlign="Center">
 			                  <m:Label text="SPL" />
 			                  <template>
 			                     <m:CheckBox selected="{ path: 'Heavy', type: 'sap.ui.model.type.String' }" />
 			                  </template>
 			               </Column>
-			               <Column width="8rem" showSortMenuEntry="false" hAlign="Center">
+			               <Column showSortMenuEntry="false" hAlign="Center">
 			                  <m:Label text="Open" />
 			                  <template>
 			                     <m:Button type="Default" text="Open Version" press="handleOpenVersionPress" />
 			                  </template>
 			               </Column>
-                     <Column width="8rem" showSortMenuEntry="false" hAlign="Center">
+                     <Column showSortMenuEntry="false" hAlign="Center">
                         <m:Label text="Delete" />
                         <template>
                            <m:Button type="Reject" text="Delete Version" press="handleOpenVersionPress"/>
