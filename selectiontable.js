@@ -533,6 +533,12 @@
     }
 
 
+  let scriptSrc = "https://prantl81.github.io/ui5_selection_table/"
+	let onScriptLoaded = function() {
+		customElements.define("tp-sac-selectiontable-ui5", Ui5CustTable);
+	}
+
+
   //SHARED FUNCTION: reuse between widgets
 	//function(src, callback) {
 	let customElementScripts = window.sessionStorage.getItem("customElementScripts") || [];
