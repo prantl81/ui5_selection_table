@@ -18,14 +18,13 @@
             xmlns:c="sap.ui.core"
             xmlns:m="sap.m"
             xmlns:u="sap.ui.unified"
-            xmlns="sap.ui.table"
-            height="100%">
+            xmlns="sap.ui.table">
             <m:Page showHeader="false" enableScrolling="false" class="sapUiContentPadding">
                 <m:content>
                     <Table id="oTable" rows="{/TableData}" selectionMode="Single" selectionBehavior="RowOnly" visibleRowCount="15" sort="sortProductId" ariaLabelledBy="title">
                         <extension>
                             <m:OverflowToolbar style="Clear">
-                                <m:Title text="Table Data" />
+                                <m:Title id="title" text="Table Data" />
                             </m:OverflowToolbar>
                         </extension>
                         <columns>
