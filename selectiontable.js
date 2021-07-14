@@ -203,6 +203,8 @@
                 console.log(response);
               }
 
+              LoadLibs();
+
               if ("rowDetails" in changedProperties) {
                 this.rowDetails = changedProperties["rowDetails"];
               }
