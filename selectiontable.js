@@ -198,13 +198,8 @@
           // executed after the properties of the custom widget have been updated.
           onCustomWidgetAfterUpdate(changedProperties) {
 
-              var that = this;
-
-              async function LoadLibs() {
-                const response = await loadthis(that);
-              }
-              LoadLibs();
-
+              loadthis(this);
+            
               if ("rowDetails" in changedProperties) {
                 this.rowDetails = changedProperties["rowDetails"];
               }
