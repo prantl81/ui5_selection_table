@@ -33,7 +33,7 @@
                                       <m:Text text="{Name}" wrapping="false" />
                                   </template>
                               </Column>
-                              <Column sortProperty="ProductId">
+                              <Column sortProperty="ProductId" filterProperty="ProductId">
                                   <m:Label text="Product Id" />
                                   <template>
                                       <m:Label text="{ProductId}" />
