@@ -123,7 +123,11 @@
               index = index + 1;
             }
 
+            //set property of widget
+            this.rowDetails = returnValue;
+
             this.dispatchEvent(new Event("OnVersionButtonPress", {
+
                   detail: {
                         properties: {
                           rowDetails: returnValue
