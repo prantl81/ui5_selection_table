@@ -12,13 +12,7 @@
          <slot name="content"></slot>
         </div>
         <script id="oView" name="oView" type="sapui5/xmlview">
-        <mvc:View
-            controllerName="myView.Template"
-            xmlns:mvc="sap.ui.core.mvc"
-            xmlns:c="sap.ui.core"
-            xmlns:m="sap.m"
-            xmlns:u="sap.ui.unified"
-            xmlns="sap.ui.table">
+        <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.ui.table" xmlns:c="sap.ui.core" xmlns:m="sap.m" xmlns:u="sap.ui.unified" controllerName="myView.Template" height="100%">
             <m:Page showHeader="false" enableScrolling="false" class="sapUiContentPadding">
                 <m:content>
                     <Table id="oTable" rows="{/TableData}" selectionMode="Single" selectionBehavior="RowOnly" visibleRowCount="15" sort="sortProductId" ariaLabelledBy="title">
