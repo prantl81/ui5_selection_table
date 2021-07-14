@@ -83,9 +83,6 @@
 
             _shadowRoot.querySelector("#oView").id = _id + "_oView";
 
-
-
-
             this.addEventListener("click", event => {
                  console.log('click');
                  let  oTable = window.globVar_UI5_Table
@@ -106,35 +103,33 @@
 
 
             this.addEventListener("VersionOpenPressed", event => {
-            let detail = event.detail.buttonContext;
-            let returnValue = "";
+                let detail = event.detail.buttonContext;
+                let returnValue = "";
 
-            //Loop Over Object to get only values into
-            let index = 0;
-            for (const [key, value] of Object.entries(detail)) {
-              //we start not with a | , format: <field1>|<field2>|<field3>
-              if ( index === 0 ){
-                returnValue = value;
-              } else {
-                returnValue = returnValue + "|" + value;
-              }
-              index = index + 1;
-            }
-
-            //set property of widget
-
-            this.dispatchEvent(new CustomEvent("propertiesChanged", {
-              detail: {
-                properties: {
-                  rowDetails: returnValue
+                //Loop Over Object to get only values into
+                let index = 0;
+                for (const [key, value] of Object.entries(detail)) {
+                  //we start not with a | , format: <field1>|<field2>|<field3>
+                      if ( index === 0 ){
+                          returnValue = value;
+                      } else {
+                          returnValue = returnValue + "|" + value;
+                      }
+                      index = index + 1;
                 }
-                }
-              }
-            ));
 
+                //change property rowDetails
+                this.dispatchEvent(new CustomEvent("propertiesChanged", {
+                      detail: {
+                        properties: {
+                          rowDetails: returnValue
+                        }
+                      }
+                  }
+                ));
 
-            this.dispatchEvent(new Event("OnVersionButtonPress", {
-            }));
+                //inform the widget that the version button was pressed, in SAC we can then read the property rowDetails
+                this.dispatchEvent(new Event("OnVersionButtonPress", { }));
 
             });
 
@@ -142,6 +137,9 @@
             this._props = {};
 
           } //constructor
+
+
+
 
           // ---------------   Standard Methods --------------------------------
 
@@ -153,6 +151,7 @@
               //merged with the properties of the _props object. Thus, _props contains the state of all properties before the update
               this._props = { ...this._props, ...changedProperties };
           }
+
 
 
           // executed after the properties of the custom widget have been updated.
@@ -263,6 +262,7 @@
 
           // ---------------   Property Setter/Getter Functions
 
+          /* not implemented that way, we use the "propertiesChanged" event to let the Custom Widget SDK framework do the job
           set rowDetails(newValue) {
               this.rowDetails = newValue;
           }
@@ -271,7 +271,7 @@
           get rowDetails() {
               return this.this.rowDetails;
           }
-
+          */
 
 
           // ---------------   "custom" methods of the widget --------------------------------
@@ -355,6 +355,7 @@
 
           // ---------------   other methods of the widget --------------------------------
 
+    /*
         _firePropertiesChanged() {
             this.rowDetails = "";
             this.dispatchEvent(new CustomEvent("propertiesChanged", {
@@ -380,6 +381,8 @@
                 this[name] = newValue;
             }
         }
+
+        */
 
     }
 
@@ -427,7 +430,11 @@
                                                     TableData : [
                                                       { Name: 'Standard CAN'  ,  ProductId : 'RB1234 ', Quantity: 1000, DeliveryDate: '18.03.2021' },
                                                       { Name: 'Hero CAN'      ,  ProductId : 'RB1235 ', Quantity: 2000, DeliveryDate: '20.12.2020' },
-                                                      { Name: 'Summer Edition',  ProductId : 'RB1236 ', Quantity: 2000, DeliveryDate: '21.03.2020' }
+                                                      { Name: 'Summer Edition',  ProductId : 'RB1236 ', Quantity: 3000, DeliveryDate: '21.03.2020' },
+                                                      { Name: 'Winter Edition',  ProductId : 'RB1236 ', Quantity: 4000, DeliveryDate: '21.03.2020' },
+                                                      { Name: 'Organics'      ,  ProductId : 'RB1236 ', Quantity:  200, DeliveryDate: '21.03.2020' },
+                                                      { Name: 'Water'         ,  ProductId : 'RB1236 ', Quantity:  500, DeliveryDate: '21.03.2020' },
+                                                      { Name: 'Chocolate'     ,  ProductId : 'RB1236 ', Quantity:  250, DeliveryDate: '21.03.2020' }
                                                     ]
                                            };
                                            var oModel = new JSONModel(oData);
