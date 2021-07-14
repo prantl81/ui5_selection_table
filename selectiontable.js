@@ -197,7 +197,12 @@
 
           // executed after the properties of the custom widget have been updated.
           onCustomWidgetAfterUpdate(changedProperties) {
-              loadthis(this);
+
+              async function LoadLibs() {
+                const response = await loadthis(this);
+                console.log(response);
+              }
+
               if ("rowDetails" in changedProperties) {
                 this.rowDetails = changedProperties["rowDetails"];
               }
@@ -533,47 +538,7 @@
     }
 
 
-  let scriptSrc = "https://prantl81.github.io/ui5_selection_table/"
-	let onScriptLoaded = function() {
-		customElements.define("tp-sac-selectiontable-ui5", Ui5CustTable);
-	}
 
-
-  //SHARED FUNCTION: reuse between widgets
-	//function(src, callback) {
-	let customElementScripts = window.sessionStorage.getItem("customElementScripts") || [];
-
-	let scriptStatus = customElementScripts.find(function(element) {
-		return element.src == scriptSrc;
-	});
-
-	if (scriptStatus) {
-		if(scriptStatus.status == "ready") {
-			onScriptLoaded();
-		} else {
-			scriptStatus.callbacks.push(onScriptLoaded);
-		}
-	} else {
-
-		let scriptObject = {
-			"src": scriptSrc,
-			"status": "loading",
-			"callbacks": [onScriptLoaded]
-		}
-
-		customElementScripts.push(scriptObject);
-
-		var script = document.createElement("script");
-		script.type = "text/javascript";
-		script.src = scriptSrc;
-		script.onload = function(){
-			scriptObject.status = "ready";
-			scriptObject.callbacks.forEach((callbackFn) => callbackFn.call());
-		};
-		document.head.appendChild(script);
-	}
-	//}
-	//END SHARED FUNCTION
 
 
 })();
