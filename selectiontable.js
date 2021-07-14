@@ -25,7 +25,7 @@
                     <Table id="oTable" rows="{/TableData}" selectionMode="Single" selectionBehavior="RowOnly" visibleRowCount="15" sort="sortProductId" ariaLabelledBy="title">
                         <extension>
                             <m:OverflowToolbar style="Clear">
-                                <Title text="Table Data" />
+                                <m:Title text="Table Data" />
                             </m:OverflowToolbar>
                         </extension>
                         <columns>
