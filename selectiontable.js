@@ -40,7 +40,7 @@
 			                     <m:Label text="{Quantity}" />
 			                  </template>
 			               </Column>
-			               <Column width="11rem" hAlign="Center">
+			               <Column width="11rem" hAlign="Center" showSortMenuEntry="false">
 			                  <m:Label text="Delivery Date" />
 			                  <template>
 			                     <m:Label text="{DeliveryDate}" />
@@ -52,17 +52,20 @@
 			                     <m:CheckBox selected="{ path: 'Heavy', type: 'sap.ui.model.type.String' }" />
 			                  </template>
 			               </Column>
+                     </Column>
+			               <Column width="10rem" showSortMenuEntry="false">
+			                  <m:Label text="Open" />
+			                  <template>
+			                     <m:Button text="Open Version" press="handleOpenVersionPress" ariaDescribedBy="defaultButtonDescription genericButtonDescription"/>
+			                  </template>
+			               </Column>
+                     <Column width="10rem" showSortMenuEntry="false">
+                        <m:Label text="Delete" />
+                        <template>
+                           <m:Button text="Delete Version" press="handleOpenVersionPress" ariaDescribedBy="rejectButtonDescription genericButtonDescription"/>
+                        </template>
+                     </Column>
                   </columns>
-                  <ColumnListItem>
-                    <Text text="Open" />
-                    <Text text="Delete" />
-                      <cells>
-                        <HBox>
-				                     <m:Button text="Open Version" press="handleOpenVersionPress" ariaDescribedBy="defaultButtonDescription genericButtonDescription"/>
-                             <m:Button text="Delete Version" press="handleOpenVersionPress" ariaDescribedBy="rejectButtonDescription genericButtonDescription"/>
-                      </HBox>
-                    </cells>
-                   </ColumnListItem>
 			         </Table>
 			      </m:content>
 			   </m:Page>
