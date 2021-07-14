@@ -198,8 +198,10 @@
           // executed after the properties of the custom widget have been updated.
           onCustomWidgetAfterUpdate(changedProperties) {
 
+              var that = this;
+
               async function LoadLibs() {
-                const response = await loadthis(this);
+                const response = await loadthis(that);
                 console.log(response);
               }
 
