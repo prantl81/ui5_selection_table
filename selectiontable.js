@@ -361,7 +361,7 @@
             	}
               return "Line Deleted.";
     	      } else {
-              return "NO line selected!";        
+              return "NO line selected!";
             }
        }
 
@@ -421,7 +421,7 @@
             "use strict";
 
             //### Controller ###
-            sap.ui.define([
+            sap.ui.require([
                 "sap/base/Log",
             		"sap/ui/core/mvc/Controller",
                 "sap/ui/model/Sorter",
