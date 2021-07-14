@@ -125,15 +125,18 @@
             }
 
             //set property of widget
-            rowDetails(returnValue);
+
+            this.dispatchEvent(new CustomEvent("propertiesChanged", {
+              detail: {
+                properties: {
+                  rowDetails: returnValue
+                }
+                }
+              }
+            ));
+
 
             this.dispatchEvent(new Event("OnVersionButtonPress", {
-
-                  detail: {
-                        properties: {
-                          rowDetails: returnValue
-                        }
-                  }
             }));
 
             });
