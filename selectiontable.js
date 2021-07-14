@@ -370,26 +370,35 @@
 
 
         getSelectedRow(){
-          let  oTable = window.globVar_UI5_Table
-          var oContext = oTable.getContextByIndex(oTable.getSelectedIndex());
+              let returnValue = "";
+              let  oTable = window.globVar_UI5_Table
 
-          var sPath = oContext.getPath();
-          var oSelRow = oContext.getProperty(sPath);
+              //check if a row is selected
+              let oSelectionIndex =  oTable.getSelectedIndex();
+              if ( oSelectionIndex > -1 ){
 
-          let returnValue = "";
-          //Loop Over Object to get only values into
-          let index = 0;
-          for (const [key, value] of Object.entries(oSelRow)) {
-            //we start not with a | , format: <field1>|<field2>|<field3>
-            if ( index === 0 ){
-              returnValue = value;
+
+                var oContext = oTable.getContextByIndex(oSelectionIndex);
+
+                var sPath = oContext.getPath();
+                var oSelRow = oContext.getProperty(sPath);
+
+
+                //Loop Over Object to get only values into
+                let index = 0;
+                for (const [key, value] of Object.entries(oSelRow)) {
+                      //we start not with a | , format: <field1>|<field2>|<field3>
+                      if ( index === 0 ){
+                        returnValue = value;
+                      } else {
+                        returnValue = returnValue + "|" + value;
+                      }
+                      index = index + 1;
+                }
+                return returnValue;
             } else {
-              returnValue = returnValue + "|" + value;
+                return "no row selected!"
             }
-            index = index + 1;
-          }
-
-          return returnValue;
         }
 
 
@@ -495,7 +504,7 @@
                                    handleDeleteVersionPress: function(oEvent) {
                                    			//MessageToast.show("Details for product with id");
                                         let buttonContext = oEvent.getSource().getBindingContext().getObject();
-                                        that.dispatchEvent(new CustomEvent("VersionOpenPressed", { detail: { buttonContext } } ));
+                                        that.dispatchEvent(new CustomEvent("VersionDeletePressed", { detail: { buttonContext } } ));
                                    }
 
 
