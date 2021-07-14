@@ -83,9 +83,6 @@
 
             _shadowRoot.querySelector("#oView").id = _id + "_oView";
 
-            this._export_settings = {};
-            this._export_settings.rowDetails = "";
-
 
 
 
@@ -141,7 +138,8 @@
 
             });
 
-
+            //empty properties
+            this._props = {};
 
           } //constructor
 
@@ -152,6 +150,7 @@
               if ("designMode" in changedProperties) {
                   this._designMode = changedProperties["designMode"];
               }
+              //merged with the properties of the _props object. Thus, _props contains the state of all properties before the update
               this._props = { ...this._props, ...changedProperties };
           }
 
