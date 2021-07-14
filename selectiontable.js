@@ -93,7 +93,7 @@
                  console.log('click');
                  let  oTable = window.globVar_UI5_Table
                  let oSelectionIndex =  oTable.getSelectedIndex();
-                 if ( oSelectionIndex !== anonymous ){
+                 if ( oSelectionIndex > -1 ){
              					let context = oTable.getContextByIndex(oSelectionIndex);
              					let value = context.getProperty("ProductId");
 
@@ -148,7 +148,7 @@
           onCustomWidgetBeforeUpdate(changedProperties) {
               if ("designMode" in changedProperties) {
                   this._designMode = changedProperties["designMode"];
-              } 
+              }
               this._props = { ...this._props, ...changedProperties };
           }
 
