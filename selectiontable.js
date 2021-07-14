@@ -444,12 +444,7 @@
                 // shortcut for sap.ui.table.SortOrder
 	              var SortOrder = library.SortOrder;
 
-
-
-                var myController = new Controller;
-
-
-                myController.create({ name: "myView.Template" }).then(function(oController) {
+                Controller.create({ name: "myView.Template" }).then(function(oController) {
                   // Do something with oController
                 });
 
