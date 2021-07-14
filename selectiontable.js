@@ -124,7 +124,7 @@
             }
 
             //set property of widget
-            this.rowDetails = returnValue;
+            rowDetails(returnValue);
 
             this.dispatchEvent(new Event("OnVersionButtonPress", {
 
